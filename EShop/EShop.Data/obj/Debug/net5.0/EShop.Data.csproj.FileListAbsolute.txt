@@ -1,0 +1,15 @@
+C:\Users\ASUS\source\repos\EShop\EShop.Data\obj\Debug\net5.0\EShop.Data.csproj.AssemblyReference.cache
+C:\Users\ASUS\source\repos\EShop\EShop.Data\obj\Debug\net5.0\EShop.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ASUS\source\repos\EShop\EShop.Data\obj\Debug\net5.0\EShop.Data.AssemblyInfoInputs.cache
+C:\Users\ASUS\source\repos\EShop\EShop.Data\obj\Debug\net5.0\EShop.Data.AssemblyInfo.cs
+C:\Users\ASUS\source\repos\EShop\EShop.Data\obj\Debug\net5.0\EShop.Data.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\source\repos\EShop\EShop.Data\bin\Debug\net5.0\EShop.Data.deps.json
+C:\Users\ASUS\source\repos\EShop\EShop.Data\bin\Debug\net5.0\EShop.Data.runtimeconfig.json
+C:\Users\ASUS\source\repos\EShop\EShop.Data\bin\Debug\net5.0\EShop.Data.runtimeconfig.dev.json
+C:\Users\ASUS\source\repos\EShop\EShop.Data\bin\Debug\net5.0\EShop.Data.dll
+C:\Users\ASUS\source\repos\EShop\EShop.Data\bin\Debug\net5.0\ref\EShop.Data.dll
+C:\Users\ASUS\source\repos\EShop\EShop.Data\bin\Debug\net5.0\EShop.Data.pdb
+C:\Users\ASUS\source\repos\EShop\EShop.Data\obj\Debug\net5.0\EShop.Data.dll
+C:\Users\ASUS\source\repos\EShop\EShop.Data\obj\Debug\net5.0\ref\EShop.Data.dll
+C:\Users\ASUS\source\repos\EShop\EShop.Data\obj\Debug\net5.0\EShop.Data.pdb
+C:\Users\ASUS\source\repos\EShop\EShop.Data\obj\Debug\net5.0\EShop.Data.genruntimeconfig.cache
