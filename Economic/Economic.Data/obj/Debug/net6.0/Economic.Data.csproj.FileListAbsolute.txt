@@ -1,0 +1,14 @@
+D:\TheRookies\Economic\Economic.Data\bin\Debug\net6.0\Economic.Data.deps.json
+D:\TheRookies\Economic\Economic.Data\bin\Debug\net6.0\Economic.Data.dll
+D:\TheRookies\Economic\Economic.Data\bin\Debug\net6.0\Economic.Data.pdb
+D:\TheRookies\Economic\Economic.Data\obj\Debug\net6.0\Economic.Data.csproj.AssemblyReference.cache
+D:\TheRookies\Economic\Economic.Data\obj\Debug\net6.0\Economic.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\TheRookies\Economic\Economic.Data\obj\Debug\net6.0\Economic.Data.AssemblyInfoInputs.cache
+D:\TheRookies\Economic\Economic.Data\obj\Debug\net6.0\Economic.Data.AssemblyInfo.cs
+D:\TheRookies\Economic\Economic.Data\obj\Debug\net6.0\Economic.Data.csproj.CoreCompileInputs.cache
+D:\TheRookies\Economic\Economic.Data\obj\Debug\net6.0\Economic.Data.dll
+D:\TheRookies\Economic\Economic.Data\obj\Debug\net6.0\refint\Economic.Data.dll
+D:\TheRookies\Economic\Economic.Data\obj\Debug\net6.0\Economic.Data.pdb
+D:\TheRookies\Economic\Economic.Data\obj\Debug\net6.0\ref\Economic.Data.dll
+D:\TheRookies\Economic\Economic.Data\bin\Debug\net6.0\Economic.Data.runtimeconfig.json
+D:\TheRookies\Economic\Economic.Data\obj\Debug\net6.0\Economic.Data.genruntimeconfig.cache
