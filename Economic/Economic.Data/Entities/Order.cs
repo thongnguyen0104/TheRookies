@@ -12,11 +12,12 @@ namespace Economic.Data.Entities
         public int Id { get; set; }
         public Status Status { get; set; }
         public Guid UserId { get; set; }
-        public User User { get; set; }
+        // public AppUser User { get; set; }
         public DateTime? OrderDate { get; set; }
         public DateTime? DeliveryDate { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
+        public List<OrderDetail> OrderDetails { get; set;}
 
     }
 }

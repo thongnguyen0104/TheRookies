@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Economic.Data.Configurations
 {
-    public class RoleConfiguration : IEntityTypeConfiguration<Role>
+    public class AppRoleConfiguration : IEntityTypeConfiguration<AppRole>
     {
-        public void Configure(EntityTypeBuilder<Role> builder)
+        public void Configure(EntityTypeBuilder<AppRole> builder)
         {
-            builder.Property(x => x.Description).IsRequired(false);
+            builder.Property(x => x.Description).IsRequired(false).HasMaxLength(200);
         }
     }
 }

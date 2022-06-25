@@ -12,7 +12,7 @@ namespace Economic.Data.Entities
         [Key]
         public Guid UserId { get; set; }
 
-        public User User { get; set; }
+        public AppUser User { get; set; }
 
         [Key]
         public int ProductId { get; set; }

@@ -18,5 +18,6 @@ namespace Economic.Data.Entities
         public ProductType ProductType { get; set; }
 
         public List<ProductImage> ProductImages { get; set; }
+        public List<OrderDetail> OrderDetails { get; set; }
     }
 }

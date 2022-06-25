@@ -6,10 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Economic.Data.Entities;
 using Economic.Data.Configurations;
+using Economic.Data.Extensions;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace Economic.Data.EF
 {
-    public class EconomicDbContext : DbContext
+    public class EconomicDbContext : IdentityDbContext<AppUser, AppRole, Guid>
     {
         public EconomicDbContext(DbContextOptions options) : base(options)
         {
@@ -23,10 +26,25 @@ namespace Economic.Data.EF
                 .ApplyConfiguration(new CartConfiguration())
                 .ApplyConfiguration(new OrderDetailConfiguration())
                 .ApplyConfiguration(new ProductConfiguration())
-                .ApplyConfiguration(new RoleConfiguration())
+                .ApplyConfiguration(new AppRoleConfiguration())
                 .ApplyConfiguration(new ProductTypeConfiguration())
                 .ApplyConfiguration(new CommentConfiguration())
                 .ApplyConfiguration(new ProductImageConfiguration());
+
+            modelBuilder.ApplyConfiguration(new AppUserConfiguration());
+            modelBuilder.ApplyConfiguration(new AppRoleConfiguration());
+
+            modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("AppUserClaims");
+            modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("AppUserRole").HasKey(x=> new {x.UserId, x.RoleId});
+            modelBuilder.Entity<IdentityUserLogin<Guid>>().ToTable("AppUserLogins").HasKey(x=> x.UserId);
+
+            modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("AppRoleClaims");
+            modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("AppUserTokens").HasKey(x=>x.UserId);
+
+
+
+            // Data seeding
+            modelBuilder.Seed();
 
         }
 
@@ -38,8 +56,5 @@ namespace Economic.Data.EF
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
 
-        public DbSet<User> Users { get; set; }
-
-        public DbSet<Role> Roles { get; set; }
     }
 }

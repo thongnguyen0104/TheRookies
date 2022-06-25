@@ -140,7 +140,17 @@ namespace Economic.Data.Extensions
                     Price = 590000,
                     Description = "Thiết kế màu cam tơi tắn, nhỏ gọn; Công nghệ nấu 1D nấu chín từ 20 - 30 phút",
                     ProductTypeId = 2
-                }
+                });
+
+            modelBuilder.Entity<ProductType>().HasData(
+                new ProductType { Id = 1, Name = "Nồi cơm điện", Description = "Mang đến những bửa cơm đầy dinh dưỡng cho gia đình bạn" },
+                new ProductType { Id = 2, Name = "Ấm đun siêu tốc", Description = "Giải pháp hiệu quả cho người bận rộn" },
+                new ProductType { Id = 3, Name = "Máy xay sinh tố", Description = "Lựa chọn tốt nhất hàng đàu mang lại vitamin trái cây" },
+                new ProductType { Id = 4, Name = "Máy ép trái cây", Description = "Chắc lọc sự tinh túy từ thiện nhiên trong ly nước ép" },
+                new ProductType { Id = 5, Name = "Nồi chiên không dầu", Description = "Cắt giảm lượng dầu mỡ tối đa cho gia đình bạn" },
+                new ProductType { Id = 6, Name = "Lẩu điện", Description = "Sự lựa chọn tối ưu cho bửa xum họp gia đình" },
+                new ProductType { Id = 7, Name = "Bếp nướng", Description = "Những buổi tiệc nướng đầy ấm áp bên người thân được mang lại" },
+                new ProductType { Id = 8, Name = "Bếp hồng ngoại", Description = "Căn bếp đầy tiện nghi và sang trọng khi có mặt sản phẩm này" }
                 );
         }
     }
