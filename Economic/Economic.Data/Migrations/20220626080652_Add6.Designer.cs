@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Economic.Data.Migrations
 {
     [DbContext(typeof(EconomicDbContext))]
-    [Migration("20220625111838_AddProductEconomicDatabase")]
-    partial class AddProductEconomicDatabase
+    [Migration("20220626080652_Add6")]
+    partial class Add6
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,6 +46,24 @@ namespace Economic.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
+                            ConcurrencyStamp = "d93a904d-bc5e-44f5-b104-11e2c2026466",
+                            Description = "Administrator role",
+                            Name = "admin",
+                            NormalizedName = "admin"
+                        },
+                        new
+                        {
+                            Id = new Guid("54ba416f-6b89-4c53-873d-4fbd48506e6d"),
+                            ConcurrencyStamp = "53e2e6b9-c949-4e75-9926-eff36beacefb",
+                            Description = "Customer role",
+                            Name = "customer",
+                            NormalizedName = "customer"
+                        });
                 });
 
             modelBuilder.Entity("Economic.Data.Entities.AppUser", b =>
@@ -114,6 +132,62 @@ namespace Economic.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
+                            AccessFailedCount = 0,
+                            Address = "Vinh Long",
+                            ConcurrencyStamp = "11a66f89-82b5-438f-904f-e73c3bce5a3d",
+                            Email = "thong@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            Name = "Nguyen Hoang Thong",
+                            NormalizedEmail = "thong@gmail.com",
+                            NormalizedUserName = "admin",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFex2V3OUzOnUnLQrTXzlvfG+Yus6IElAs8CLeUYSAOEpmRbkUcr5/Xa8JiQvRSaPA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "",
+                            TwoFactorEnabled = false,
+                            UserName = "admin"
+                        },
+                        new
+                        {
+                            Id = new Guid("bff91064-dc92-421e-a233-d1080f630928"),
+                            AccessFailedCount = 0,
+                            Address = "Can Tho",
+                            ConcurrencyStamp = "6d68e17e-17c1-4861-8821-ed6574dc8448",
+                            Email = "customer1@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            Name = "Nguyen Hoang Thong Customer",
+                            NormalizedEmail = "customer1@gmail.com",
+                            NormalizedUserName = "customer",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHJ9+VTIXxPrW11cveecZAAa1b5LL1RqJQlA4BpPmzBMAdpO3c56oUbVRt4am5yq4Q==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "",
+                            TwoFactorEnabled = false,
+                            UserName = "customer1"
+                        },
+                        new
+                        {
+                            Id = new Guid("bff91054-dc92-421e-a233-d1080f630928"),
+                            AccessFailedCount = 0,
+                            Address = "TP HCM",
+                            ConcurrencyStamp = "0faf31fe-6218-4c73-abfd-a510f55fa2ce",
+                            Email = "customer2@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            Name = "David",
+                            NormalizedEmail = "customer2@gmail.com",
+                            NormalizedUserName = "customer",
+                            PasswordHash = "AQAAAAEAACcQAAAAEM7Xy5nidB2HvXfQNcjfSVDT3Vx2YnEjJ8OBUv/KpVx0tkEXNdUF8hE66cckQG/Aiw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "",
+                            TwoFactorEnabled = false,
+                            UserName = "customer2"
+                        });
                 });
 
             modelBuilder.Entity("Economic.Data.Entities.Cart", b =>
@@ -167,6 +241,98 @@ namespace Economic.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Comments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Content = "Nồi tạm ổn",
+                            Created = new DateTime(2022, 6, 26, 15, 6, 52, 416, DateTimeKind.Local).AddTicks(352),
+                            ProductId = 1,
+                            Star = 5,
+                            UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Content = "Sản phẩm tốt",
+                            Created = new DateTime(2022, 6, 26, 15, 6, 52, 416, DateTimeKind.Local).AddTicks(364),
+                            ProductId = 1,
+                            Star = 4,
+                            UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Content = "Chất lượng ổn",
+                            Created = new DateTime(2022, 6, 26, 15, 6, 52, 416, DateTimeKind.Local).AddTicks(365),
+                            ProductId = 2,
+                            Star = 3,
+                            UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Content = "Tạm ổn",
+                            Created = new DateTime(2022, 6, 26, 15, 6, 52, 416, DateTimeKind.Local).AddTicks(366),
+                            ProductId = 2,
+                            Star = 2,
+                            UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Content = "Nồi tạm ổn",
+                            Created = new DateTime(2022, 6, 26, 15, 6, 52, 416, DateTimeKind.Local).AddTicks(367),
+                            ProductId = 3,
+                            Star = 1,
+                            UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Content = "Tốt lắm",
+                            Created = new DateTime(2022, 6, 26, 15, 6, 52, 416, DateTimeKind.Local).AddTicks(369),
+                            ProductId = 7,
+                            Star = 5,
+                            UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Content = "Tàm tạm",
+                            Created = new DateTime(2022, 6, 26, 15, 6, 52, 416, DateTimeKind.Local).AddTicks(370),
+                            ProductId = 7,
+                            Star = 3,
+                            UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Content = "Ổn áp",
+                            Created = new DateTime(2022, 6, 26, 15, 6, 52, 416, DateTimeKind.Local).AddTicks(372),
+                            ProductId = 8,
+                            Star = 4,
+                            UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Content = "Tốt",
+                            Created = new DateTime(2022, 6, 26, 15, 6, 52, 416, DateTimeKind.Local).AddTicks(373),
+                            ProductId = 9,
+                            Star = 2,
+                            UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Content = "Sản phẩm ổn",
+                            Created = new DateTime(2022, 6, 26, 15, 6, 52, 416, DateTimeKind.Local).AddTicks(374),
+                            ProductId = 10,
+                            Star = 3,
+                            UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")
+                        });
                 });
 
             modelBuilder.Entity("Economic.Data.Entities.Order", b =>
@@ -406,6 +572,392 @@ namespace Economic.Data.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductImages");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ProductId = 1,
+                            ProductPath = "1.jpg"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ProductId = 1,
+                            ProductPath = "1.1.jpg"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ProductId = 1,
+                            ProductPath = "1.2.jpg"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ProductId = 1,
+                            ProductPath = "1.3.jpg"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ProductId = 2,
+                            ProductPath = "2.jpg"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ProductId = 2,
+                            ProductPath = "2.1.jpg"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            ProductId = 2,
+                            ProductPath = "2.2.jpg"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ProductId = 2,
+                            ProductPath = "2.3.jpg"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            ProductId = 3,
+                            ProductPath = "3.jpg"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            ProductId = 3,
+                            ProductPath = "3.1.jpg"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            ProductId = 3,
+                            ProductPath = "3.2.jpg"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            ProductId = 3,
+                            ProductPath = "3.3.jpg"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            ProductId = 4,
+                            ProductPath = "4.jpg"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            ProductId = 4,
+                            ProductPath = "4.1.jpg"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            ProductId = 4,
+                            ProductPath = "4.2.jpg"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            ProductId = 4,
+                            ProductPath = "4.3.jpg"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            ProductId = 5,
+                            ProductPath = "5.jpg"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            ProductId = 5,
+                            ProductPath = "5.1.jpg"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            ProductId = 5,
+                            ProductPath = "5.2.jpg"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            ProductId = 5,
+                            ProductPath = "5.3.jpg"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            ProductId = 6,
+                            ProductPath = "6.jpg"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            ProductId = 6,
+                            ProductPath = "6.1.jpg"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            ProductId = 6,
+                            ProductPath = "6.2.jpg"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            ProductId = 6,
+                            ProductPath = "6.3.jpg"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            ProductId = 7,
+                            ProductPath = "7.jpg"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            ProductId = 7,
+                            ProductPath = "7.1.jpg"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            ProductId = 7,
+                            ProductPath = "7.2.jpg"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            ProductId = 7,
+                            ProductPath = "7.3.jpg"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            ProductId = 8,
+                            ProductPath = "8.jpg"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            ProductId = 8,
+                            ProductPath = "8.1.jpg"
+                        },
+                        new
+                        {
+                            Id = 31,
+                            ProductId = 8,
+                            ProductPath = "8.2.jpg"
+                        },
+                        new
+                        {
+                            Id = 32,
+                            ProductId = 8,
+                            ProductPath = "8.3.jpg"
+                        },
+                        new
+                        {
+                            Id = 33,
+                            ProductId = 9,
+                            ProductPath = "9.jpg"
+                        },
+                        new
+                        {
+                            Id = 34,
+                            ProductId = 9,
+                            ProductPath = "9.1.jpg"
+                        },
+                        new
+                        {
+                            Id = 35,
+                            ProductId = 9,
+                            ProductPath = "9.2.jpg"
+                        },
+                        new
+                        {
+                            Id = 36,
+                            ProductId = 9,
+                            ProductPath = "9.3.jpg"
+                        },
+                        new
+                        {
+                            Id = 37,
+                            ProductId = 10,
+                            ProductPath = "10.jpg"
+                        },
+                        new
+                        {
+                            Id = 38,
+                            ProductId = 10,
+                            ProductPath = "10.1.jpg"
+                        },
+                        new
+                        {
+                            Id = 39,
+                            ProductId = 10,
+                            ProductPath = "10.2.jpg"
+                        },
+                        new
+                        {
+                            Id = 40,
+                            ProductId = 10,
+                            ProductPath = "10.3.jpg"
+                        },
+                        new
+                        {
+                            Id = 41,
+                            ProductId = 11,
+                            ProductPath = "11.jpg"
+                        },
+                        new
+                        {
+                            Id = 42,
+                            ProductId = 11,
+                            ProductPath = "11.1.jpg"
+                        },
+                        new
+                        {
+                            Id = 43,
+                            ProductId = 11,
+                            ProductPath = "11.2.jpg"
+                        },
+                        new
+                        {
+                            Id = 44,
+                            ProductId = 11,
+                            ProductPath = "11.3.jpg"
+                        },
+                        new
+                        {
+                            Id = 45,
+                            ProductId = 12,
+                            ProductPath = "12.jpg"
+                        },
+                        new
+                        {
+                            Id = 46,
+                            ProductId = 12,
+                            ProductPath = "12.1.jpg"
+                        },
+                        new
+                        {
+                            Id = 47,
+                            ProductId = 12,
+                            ProductPath = "12.2.jpg"
+                        },
+                        new
+                        {
+                            Id = 48,
+                            ProductId = 12,
+                            ProductPath = "12.3.jpg"
+                        },
+                        new
+                        {
+                            Id = 49,
+                            ProductId = 13,
+                            ProductPath = "13.jpg"
+                        },
+                        new
+                        {
+                            Id = 50,
+                            ProductId = 13,
+                            ProductPath = "13.1.jpg"
+                        },
+                        new
+                        {
+                            Id = 51,
+                            ProductId = 13,
+                            ProductPath = "13.2.jpg"
+                        },
+                        new
+                        {
+                            Id = 52,
+                            ProductId = 13,
+                            ProductPath = "13.3.jpg"
+                        },
+                        new
+                        {
+                            Id = 53,
+                            ProductId = 14,
+                            ProductPath = "14.jpg"
+                        },
+                        new
+                        {
+                            Id = 54,
+                            ProductId = 14,
+                            ProductPath = "14.1.jpg"
+                        },
+                        new
+                        {
+                            Id = 55,
+                            ProductId = 14,
+                            ProductPath = "14.2.jpg"
+                        },
+                        new
+                        {
+                            Id = 56,
+                            ProductId = 14,
+                            ProductPath = "14.3.jpg"
+                        },
+                        new
+                        {
+                            Id = 57,
+                            ProductId = 15,
+                            ProductPath = "15.jpg"
+                        },
+                        new
+                        {
+                            Id = 58,
+                            ProductId = 15,
+                            ProductPath = "15.1.jpg"
+                        },
+                        new
+                        {
+                            Id = 59,
+                            ProductId = 15,
+                            ProductPath = "15.2.jpg"
+                        },
+                        new
+                        {
+                            Id = 60,
+                            ProductId = 15,
+                            ProductPath = "15.3.jpg"
+                        },
+                        new
+                        {
+                            Id = 61,
+                            ProductId = 16,
+                            ProductPath = "16.jpg"
+                        },
+                        new
+                        {
+                            Id = 62,
+                            ProductId = 16,
+                            ProductPath = "16.1.jpg"
+                        },
+                        new
+                        {
+                            Id = 63,
+                            ProductId = 16,
+                            ProductPath = "16.2.jpg"
+                        },
+                        new
+                        {
+                            Id = 64,
+                            ProductId = 16,
+                            ProductPath = "16.3.jpg"
+                        });
                 });
 
             modelBuilder.Entity("Economic.Data.Entities.ProductType", b =>
@@ -553,6 +1105,23 @@ namespace Economic.Data.Migrations
                     b.HasKey("UserId", "RoleId");
 
                     b.ToTable("AppUserRole", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
+                            RoleId = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc")
+                        },
+                        new
+                        {
+                            UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928"),
+                            RoleId = new Guid("54ba416f-6b89-4c53-873d-4fbd48506e6d")
+                        },
+                        new
+                        {
+                            UserId = new Guid("bff91054-dc92-421e-a233-d1080f630928"),
+                            RoleId = new Guid("54ba416f-6b89-4c53-873d-4fbd48506e6d")
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>

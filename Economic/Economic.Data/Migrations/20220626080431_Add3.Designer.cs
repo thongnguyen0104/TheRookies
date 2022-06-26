@@ -4,6 +4,7 @@ using Economic.Data.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Economic.Data.Migrations
 {
     [DbContext(typeof(EconomicDbContext))]
-    partial class EconomicDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220626080431_Add3")]
+    partial class Add3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,7 +51,7 @@ namespace Economic.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "115fc7c7-9639-49b0-86fb-1b64b7b20366",
+                            ConcurrencyStamp = "b8c6826f-c437-4c46-a31b-12588bec891c",
                             Description = "Administrator role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -57,7 +59,7 @@ namespace Economic.Data.Migrations
                         new
                         {
                             Id = new Guid("54ba416f-6b89-4c53-873d-4fbd48506e6d"),
-                            ConcurrencyStamp = "3273061a-2ef5-4aed-93c2-6f3654208fd0",
+                            ConcurrencyStamp = "5b09cc5a-04ea-4fe8-bd95-6e2d95ae0770",
                             Description = "Customer role",
                             Name = "customer",
                             NormalizedName = "customer"
@@ -137,14 +139,14 @@ namespace Economic.Data.Migrations
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
                             Address = "Vinh Long",
-                            ConcurrencyStamp = "1c7ad0bc-f51d-4b53-8cee-8f370c3dad53",
+                            ConcurrencyStamp = "fa1a1f76-ad9e-4b6d-a981-109c64e70f22",
                             Email = "thong@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             Name = "Nguyen Hoang Thong",
                             NormalizedEmail = "thong@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHYLpjOELfBSN0se4UBKMOjEsFPaYPAUeFLIfqQsQJTY7KgHiIc78/Q/BPYph066cA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEM0f6xQX8QyxAqXf9nIW+DpyJFfAZhj3Aa9L0NhVSRktEDwIr4dwn6MMAl3wCOQRpQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -155,14 +157,14 @@ namespace Economic.Data.Migrations
                             Id = new Guid("bff91064-dc92-421e-a233-d1080f630928"),
                             AccessFailedCount = 0,
                             Address = "Can Tho",
-                            ConcurrencyStamp = "c85a52e5-3b80-44c9-a818-e842edd70798",
+                            ConcurrencyStamp = "57dce83b-a0be-47b7-82df-62a066a0c33f",
                             Email = "customer1@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             Name = "Nguyen Hoang Thong Customer",
                             NormalizedEmail = "customer1@gmail.com",
                             NormalizedUserName = "customer",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFc1kIfgrW2AGHotszjwyOhj3UBryu31rLsFt9GlyjdaSFnaItL2ZEQBZJ1CYHiF6w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEN1NRXMk82FtPH8Sfxn3ZGtbi5qGTFOe5pITDMjV3KQDSrV8LM4PLvhD+8E/cwuI4Q==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -173,14 +175,14 @@ namespace Economic.Data.Migrations
                             Id = new Guid("bff91054-dc92-421e-a233-d1080f630928"),
                             AccessFailedCount = 0,
                             Address = "TP HCM",
-                            ConcurrencyStamp = "c02fcf29-e9dc-4e5b-96f4-056ae00b9014",
+                            ConcurrencyStamp = "3c9b8b9a-4b88-48b0-aebc-08794a4a3a30",
                             Email = "customer2@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             Name = "David",
                             NormalizedEmail = "customer2@gmail.com",
                             NormalizedUserName = "customer",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGDOWEfpfECuA+zBatQcz+8sRJyPSmm2Jek624FhZ4zX+GxvEMrHR8zSoir62cPGWA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEA8L+zTHDdwFJcEeXKpG4VvL9pJ8/c1GlQn6ML9Oi0Qzy0rL3w5pJiQqgHEvP+MlfQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -239,98 +241,6 @@ namespace Economic.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Comments");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Content = "Nồi tạm ổn",
-                            Created = new DateTime(2022, 6, 26, 15, 37, 26, 47, DateTimeKind.Local).AddTicks(9076),
-                            ProductId = 1,
-                            Star = 5,
-                            UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Content = "Sản phẩm tốt",
-                            Created = new DateTime(2022, 6, 26, 15, 37, 26, 47, DateTimeKind.Local).AddTicks(9090),
-                            ProductId = 1,
-                            Star = 4,
-                            UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Content = "Chất lượng ổn",
-                            Created = new DateTime(2022, 6, 26, 15, 37, 26, 47, DateTimeKind.Local).AddTicks(9092),
-                            ProductId = 2,
-                            Star = 3,
-                            UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Content = "Tạm ổn",
-                            Created = new DateTime(2022, 6, 26, 15, 37, 26, 47, DateTimeKind.Local).AddTicks(9093),
-                            ProductId = 2,
-                            Star = 2,
-                            UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Content = "Nồi tạm ổn",
-                            Created = new DateTime(2022, 6, 26, 15, 37, 26, 47, DateTimeKind.Local).AddTicks(9094),
-                            ProductId = 3,
-                            Star = 1,
-                            UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Content = "Tốt lắm",
-                            Created = new DateTime(2022, 6, 26, 15, 37, 26, 47, DateTimeKind.Local).AddTicks(9096),
-                            ProductId = 7,
-                            Star = 5,
-                            UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Content = "Tàm tạm",
-                            Created = new DateTime(2022, 6, 26, 15, 37, 26, 47, DateTimeKind.Local).AddTicks(9097),
-                            ProductId = 7,
-                            Star = 3,
-                            UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Content = "Ổn áp",
-                            Created = new DateTime(2022, 6, 26, 15, 37, 26, 47, DateTimeKind.Local).AddTicks(9099),
-                            ProductId = 8,
-                            Star = 4,
-                            UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Content = "Tốt",
-                            Created = new DateTime(2022, 6, 26, 15, 37, 26, 47, DateTimeKind.Local).AddTicks(9100),
-                            ProductId = 9,
-                            Star = 2,
-                            UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Content = "Sản phẩm ổn",
-                            Created = new DateTime(2022, 6, 26, 15, 37, 26, 47, DateTimeKind.Local).AddTicks(9101),
-                            ProductId = 10,
-                            Star = 3,
-                            UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")
-                        });
                 });
 
             modelBuilder.Entity("Economic.Data.Entities.Order", b =>
@@ -368,54 +278,6 @@ namespace Economic.Data.Migrations
                     b.HasIndex("AppUserId");
 
                     b.ToTable("Orders");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DeliveryDate = new DateTime(2021, 5, 21, 12, 45, 0, 0, DateTimeKind.Unspecified),
-                            OrderDate = new DateTime(2021, 5, 21, 12, 45, 0, 0, DateTimeKind.Unspecified),
-                            Status = 4,
-                            UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DeliveryDate = new DateTime(2021, 5, 22, 10, 50, 0, 0, DateTimeKind.Unspecified),
-                            OrderDate = new DateTime(2021, 5, 22, 13, 41, 0, 0, DateTimeKind.Unspecified),
-                            Status = 4,
-                            UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
-                        },
-                        new
-                        {
-                            Id = 3,
-                            DeliveryDate = new DateTime(2021, 5, 23, 9, 34, 0, 0, DateTimeKind.Unspecified),
-                            OrderDate = new DateTime(2021, 5, 22, 15, 23, 0, 0, DateTimeKind.Unspecified),
-                            Status = 4,
-                            UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
-                        },
-                        new
-                        {
-                            Id = 4,
-                            DeliveryDate = new DateTime(2021, 5, 23, 16, 23, 0, 0, DateTimeKind.Unspecified),
-                            OrderDate = new DateTime(2021, 5, 23, 12, 11, 0, 0, DateTimeKind.Unspecified),
-                            Status = 4,
-                            UserId = new Guid("bff91054-dc92-421e-a233-d1080f630928")
-                        },
-                        new
-                        {
-                            Id = 5,
-                            OrderDate = new DateTime(2021, 5, 24, 12, 11, 0, 0, DateTimeKind.Unspecified),
-                            Status = 2,
-                            UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
-                        },
-                        new
-                        {
-                            Id = 6,
-                            OrderDate = new DateTime(2021, 5, 24, 12, 30, 0, 0, DateTimeKind.Unspecified),
-                            Status = 2,
-                            UserId = new Guid("bff91054-dc92-421e-a233-d1080f630928")
-                        });
                 });
 
             modelBuilder.Entity("Economic.Data.Entities.OrderDetail", b =>
@@ -436,56 +298,6 @@ namespace Economic.Data.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("OrderDetails");
-
-                    b.HasData(
-                        new
-                        {
-                            OrderId = 1,
-                            ProductId = 1,
-                            Amount = 2
-                        },
-                        new
-                        {
-                            OrderId = 2,
-                            ProductId = 2,
-                            Amount = 1
-                        },
-                        new
-                        {
-                            OrderId = 3,
-                            ProductId = 3,
-                            Amount = 1
-                        },
-                        new
-                        {
-                            OrderId = 3,
-                            ProductId = 1,
-                            Amount = 2
-                        },
-                        new
-                        {
-                            OrderId = 4,
-                            ProductId = 1,
-                            Amount = 1
-                        },
-                        new
-                        {
-                            OrderId = 5,
-                            ProductId = 3,
-                            Amount = 1
-                        },
-                        new
-                        {
-                            OrderId = 5,
-                            ProductId = 2,
-                            Amount = 1
-                        },
-                        new
-                        {
-                            OrderId = 6,
-                            ProductId = 4,
-                            Amount = 1
-                        });
                 });
 
             modelBuilder.Entity("Economic.Data.Entities.Product", b =>
@@ -1201,23 +1013,6 @@ namespace Economic.Data.Migrations
                     b.HasKey("UserId", "RoleId");
 
                     b.ToTable("AppUserRole", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
-                            RoleId = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc")
-                        },
-                        new
-                        {
-                            UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928"),
-                            RoleId = new Guid("54ba416f-6b89-4c53-873d-4fbd48506e6d")
-                        },
-                        new
-                        {
-                            UserId = new Guid("bff91054-dc92-421e-a233-d1080f630928"),
-                            RoleId = new Guid("54ba416f-6b89-4c53-873d-4fbd48506e6d")
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
