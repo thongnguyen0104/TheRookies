@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Economic.Api", "Economic.Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Economic.Application", "Economic.Application\Economic.Application.csproj", "{E25CEC9B-5F57-4C40-BC15-A0823FE94F0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Economic.Utilities", "Economic.Utilities\Economic.Utilities.csproj", "{1878CAC3-B038-4147-9E68-F9C118F86D18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Economic.Utilities", "Economic.Utilities\Economic.Utilities.csproj", "{1878CAC3-B038-4147-9E68-F9C118F86D18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Economic.ViewModels", "Economic.ViewModels\Economic.ViewModels.csproj", "{9B821CDA-AC91-48F9-9256-D3331C73F0DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{1878CAC3-B038-4147-9E68-F9C118F86D18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1878CAC3-B038-4147-9E68-F9C118F86D18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1878CAC3-B038-4147-9E68-F9C118F86D18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B821CDA-AC91-48F9-9256-D3331C73F0DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B821CDA-AC91-48F9-9256-D3331C73F0DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B821CDA-AC91-48F9-9256-D3331C73F0DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B821CDA-AC91-48F9-9256-D3331C73F0DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

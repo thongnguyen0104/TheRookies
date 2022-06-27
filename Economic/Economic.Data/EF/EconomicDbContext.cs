@@ -40,14 +40,10 @@ namespace Economic.Data.EF
 
             modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("AppRoleClaims");
             modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("AppUserTokens").HasKey(x=>x.UserId);
-
-
-
             // Data seeding
             modelBuilder.Seed();
 
         }
-
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<ProductType> ProductTypes { get; set; }

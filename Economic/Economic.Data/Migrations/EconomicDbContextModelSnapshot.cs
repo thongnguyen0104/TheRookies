@@ -49,7 +49,7 @@ namespace Economic.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "115fc7c7-9639-49b0-86fb-1b64b7b20366",
+                            ConcurrencyStamp = "4584303a-f9e8-41fa-bc6b-2e481dda5f77",
                             Description = "Administrator role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -57,7 +57,7 @@ namespace Economic.Data.Migrations
                         new
                         {
                             Id = new Guid("54ba416f-6b89-4c53-873d-4fbd48506e6d"),
-                            ConcurrencyStamp = "3273061a-2ef5-4aed-93c2-6f3654208fd0",
+                            ConcurrencyStamp = "2cd78571-e5cc-4a7e-9a77-ba18621195c9",
                             Description = "Customer role",
                             Name = "customer",
                             NormalizedName = "customer"
@@ -137,14 +137,14 @@ namespace Economic.Data.Migrations
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
                             Address = "Vinh Long",
-                            ConcurrencyStamp = "1c7ad0bc-f51d-4b53-8cee-8f370c3dad53",
+                            ConcurrencyStamp = "ef5f16a4-ae38-4604-9edc-9b5e04cbd46d",
                             Email = "thong@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             Name = "Nguyen Hoang Thong",
                             NormalizedEmail = "thong@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHYLpjOELfBSN0se4UBKMOjEsFPaYPAUeFLIfqQsQJTY7KgHiIc78/Q/BPYph066cA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHCVrCwZAlYUh3GgkOfHioIESN5jtcByXcY7iswv7YKjjtZWFxJMAMj7lNBORuB0Gg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -155,14 +155,14 @@ namespace Economic.Data.Migrations
                             Id = new Guid("bff91064-dc92-421e-a233-d1080f630928"),
                             AccessFailedCount = 0,
                             Address = "Can Tho",
-                            ConcurrencyStamp = "c85a52e5-3b80-44c9-a818-e842edd70798",
+                            ConcurrencyStamp = "d59eaf8d-2ead-4726-a755-03f26337110c",
                             Email = "customer1@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             Name = "Nguyen Hoang Thong Customer",
                             NormalizedEmail = "customer1@gmail.com",
                             NormalizedUserName = "customer",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFc1kIfgrW2AGHotszjwyOhj3UBryu31rLsFt9GlyjdaSFnaItL2ZEQBZJ1CYHiF6w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBA0ZJtvO6P2lzWUc4esj0/07taWrGw5AjKVcfm1ISTjGdBwg3FZxN5GIro4z/5Cmw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -173,14 +173,14 @@ namespace Economic.Data.Migrations
                             Id = new Guid("bff91054-dc92-421e-a233-d1080f630928"),
                             AccessFailedCount = 0,
                             Address = "TP HCM",
-                            ConcurrencyStamp = "c02fcf29-e9dc-4e5b-96f4-056ae00b9014",
+                            ConcurrencyStamp = "ce65c1c0-8e8f-47df-9783-610cea761fd2",
                             Email = "customer2@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             Name = "David",
                             NormalizedEmail = "customer2@gmail.com",
                             NormalizedUserName = "customer",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGDOWEfpfECuA+zBatQcz+8sRJyPSmm2Jek624FhZ4zX+GxvEMrHR8zSoir62cPGWA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIVChlYlYVZvu9wMBWYwH5d+4TUcNZjZ3b1elhXu48K3GpGXLR6P5LUnyOC5wbRhfg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -245,7 +245,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 1,
                             Content = "Nồi tạm ổn",
-                            Created = new DateTime(2022, 6, 26, 15, 37, 26, 47, DateTimeKind.Local).AddTicks(9076),
+                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1522),
                             ProductId = 1,
                             Star = 5,
                             UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
@@ -254,7 +254,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 2,
                             Content = "Sản phẩm tốt",
-                            Created = new DateTime(2022, 6, 26, 15, 37, 26, 47, DateTimeKind.Local).AddTicks(9090),
+                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1536),
                             ProductId = 1,
                             Star = 4,
                             UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")
@@ -263,7 +263,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 3,
                             Content = "Chất lượng ổn",
-                            Created = new DateTime(2022, 6, 26, 15, 37, 26, 47, DateTimeKind.Local).AddTicks(9092),
+                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1537),
                             ProductId = 2,
                             Star = 3,
                             UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
@@ -272,7 +272,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 4,
                             Content = "Tạm ổn",
-                            Created = new DateTime(2022, 6, 26, 15, 37, 26, 47, DateTimeKind.Local).AddTicks(9093),
+                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1539),
                             ProductId = 2,
                             Star = 2,
                             UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")
@@ -281,7 +281,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 5,
                             Content = "Nồi tạm ổn",
-                            Created = new DateTime(2022, 6, 26, 15, 37, 26, 47, DateTimeKind.Local).AddTicks(9094),
+                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1540),
                             ProductId = 3,
                             Star = 1,
                             UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
@@ -290,7 +290,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 6,
                             Content = "Tốt lắm",
-                            Created = new DateTime(2022, 6, 26, 15, 37, 26, 47, DateTimeKind.Local).AddTicks(9096),
+                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1541),
                             ProductId = 7,
                             Star = 5,
                             UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")
@@ -299,7 +299,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 7,
                             Content = "Tàm tạm",
-                            Created = new DateTime(2022, 6, 26, 15, 37, 26, 47, DateTimeKind.Local).AddTicks(9097),
+                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1543),
                             ProductId = 7,
                             Star = 3,
                             UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
@@ -308,7 +308,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 8,
                             Content = "Ổn áp",
-                            Created = new DateTime(2022, 6, 26, 15, 37, 26, 47, DateTimeKind.Local).AddTicks(9099),
+                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1544),
                             ProductId = 8,
                             Star = 4,
                             UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")
@@ -317,7 +317,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 9,
                             Content = "Tốt",
-                            Created = new DateTime(2022, 6, 26, 15, 37, 26, 47, DateTimeKind.Local).AddTicks(9100),
+                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1546),
                             ProductId = 9,
                             Star = 2,
                             UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
@@ -326,7 +326,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 10,
                             Content = "Sản phẩm ổn",
-                            Created = new DateTime(2022, 6, 26, 15, 37, 26, 47, DateTimeKind.Local).AddTicks(9101),
+                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1547),
                             ProductId = 10,
                             Star = 3,
                             UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")

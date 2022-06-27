@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Economic.Application.Dtos
+namespace Economic.ViewModels.Common
 {
     public class PagedResult<T>
     {

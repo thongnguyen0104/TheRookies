@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Economic.Application.Dtos
+namespace Economic.ViewModels.Common
 {
     public class PagingResultBase
     {
-        public int PageIndex { get; set; } 
-
+        public int PageIndex { get; set; }
         public int PageSize { get; set; }
     }
 }

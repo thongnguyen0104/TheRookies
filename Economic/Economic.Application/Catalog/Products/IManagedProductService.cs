@@ -1,11 +1,8 @@
-﻿using Economic.Application.Catalog.Products.Dtos;
-using Economic.Application.Catalog.Products.Dtos.Manage;
-using Economic.Application.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Economic.ViewModels.Catalog.Products;
+using Economic.ViewModels.Catalog.Products.Manage;
+using Economic.ViewModels.Catalog.Products.Public;
+using Economic.ViewModels.Common;
+using Microsoft.AspNetCore.Http;
 
 namespace Economic.Application.Catalog.Products
 {
@@ -19,9 +16,10 @@ namespace Economic.Application.Catalog.Products
 
         Task<bool> UpdatePrice(int productId, decimal newPrice);
 
-        //Task<List<ProductViewModel>> GetAll();
-
-        Task<PagedResult<ProductViewModel>> GetAllPaging(GetProductPagingRequest request);
-
+        Task<PagedResult<ProductViewModel>> GetAllPaging(ViewModels.Catalog.Products.Manage.GetProductPagingRequest request);
+        Task<int> AddImages(int productId, List<IFormFile> files);
+        Task<int> RomoveImages(int imageId);
+        //Task<int> UpdateImage(int imageId);
+        Task<List<ProductImageViewModel>> GetListImage(int productId);
     }
 }

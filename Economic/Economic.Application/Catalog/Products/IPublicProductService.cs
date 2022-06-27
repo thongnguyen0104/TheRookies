@@ -1,6 +1,6 @@
-﻿using Economic.Application.Catalog.Products.Dtos;
-using Economic.Application.Catalog.Products.Dtos.Public;
-using Economic.Application.Dtos;
+﻿using Economic.ViewModels.Catalog.Products;
+using Economic.ViewModels.Catalog.Products.Public;
+using Economic.ViewModels.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +11,6 @@ namespace Economic.Application.Catalog.Products
 {
     public interface IPublicProductService
     {
-        PagedResult<ProductViewModel> GetAllByProductTypeId(GetProductPagingRequest request);
+        Task<PagedResult<ProductViewModel>> GetAllByProductTypeId(GetProductPagingRequest request);
     }
 }

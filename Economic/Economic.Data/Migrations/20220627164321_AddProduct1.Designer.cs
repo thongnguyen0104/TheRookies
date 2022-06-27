@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Economic.Data.Migrations
 {
     [DbContext(typeof(EconomicDbContext))]
-    [Migration("20220626080652_Add6")]
-    partial class Add6
+    [Migration("20220627164321_AddProduct1")]
+    partial class AddProduct1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -51,7 +51,7 @@ namespace Economic.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "d93a904d-bc5e-44f5-b104-11e2c2026466",
+                            ConcurrencyStamp = "4584303a-f9e8-41fa-bc6b-2e481dda5f77",
                             Description = "Administrator role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -59,7 +59,7 @@ namespace Economic.Data.Migrations
                         new
                         {
                             Id = new Guid("54ba416f-6b89-4c53-873d-4fbd48506e6d"),
-                            ConcurrencyStamp = "53e2e6b9-c949-4e75-9926-eff36beacefb",
+                            ConcurrencyStamp = "2cd78571-e5cc-4a7e-9a77-ba18621195c9",
                             Description = "Customer role",
                             Name = "customer",
                             NormalizedName = "customer"
@@ -139,14 +139,14 @@ namespace Economic.Data.Migrations
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
                             Address = "Vinh Long",
-                            ConcurrencyStamp = "11a66f89-82b5-438f-904f-e73c3bce5a3d",
+                            ConcurrencyStamp = "ef5f16a4-ae38-4604-9edc-9b5e04cbd46d",
                             Email = "thong@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             Name = "Nguyen Hoang Thong",
                             NormalizedEmail = "thong@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFex2V3OUzOnUnLQrTXzlvfG+Yus6IElAs8CLeUYSAOEpmRbkUcr5/Xa8JiQvRSaPA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHCVrCwZAlYUh3GgkOfHioIESN5jtcByXcY7iswv7YKjjtZWFxJMAMj7lNBORuB0Gg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -157,14 +157,14 @@ namespace Economic.Data.Migrations
                             Id = new Guid("bff91064-dc92-421e-a233-d1080f630928"),
                             AccessFailedCount = 0,
                             Address = "Can Tho",
-                            ConcurrencyStamp = "6d68e17e-17c1-4861-8821-ed6574dc8448",
+                            ConcurrencyStamp = "d59eaf8d-2ead-4726-a755-03f26337110c",
                             Email = "customer1@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             Name = "Nguyen Hoang Thong Customer",
                             NormalizedEmail = "customer1@gmail.com",
                             NormalizedUserName = "customer",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHJ9+VTIXxPrW11cveecZAAa1b5LL1RqJQlA4BpPmzBMAdpO3c56oUbVRt4am5yq4Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBA0ZJtvO6P2lzWUc4esj0/07taWrGw5AjKVcfm1ISTjGdBwg3FZxN5GIro4z/5Cmw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -175,14 +175,14 @@ namespace Economic.Data.Migrations
                             Id = new Guid("bff91054-dc92-421e-a233-d1080f630928"),
                             AccessFailedCount = 0,
                             Address = "TP HCM",
-                            ConcurrencyStamp = "0faf31fe-6218-4c73-abfd-a510f55fa2ce",
+                            ConcurrencyStamp = "ce65c1c0-8e8f-47df-9783-610cea761fd2",
                             Email = "customer2@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             Name = "David",
                             NormalizedEmail = "customer2@gmail.com",
                             NormalizedUserName = "customer",
-                            PasswordHash = "AQAAAAEAACcQAAAAEM7Xy5nidB2HvXfQNcjfSVDT3Vx2YnEjJ8OBUv/KpVx0tkEXNdUF8hE66cckQG/Aiw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIVChlYlYVZvu9wMBWYwH5d+4TUcNZjZ3b1elhXu48K3GpGXLR6P5LUnyOC5wbRhfg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -247,7 +247,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 1,
                             Content = "Nồi tạm ổn",
-                            Created = new DateTime(2022, 6, 26, 15, 6, 52, 416, DateTimeKind.Local).AddTicks(352),
+                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1522),
                             ProductId = 1,
                             Star = 5,
                             UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
@@ -256,7 +256,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 2,
                             Content = "Sản phẩm tốt",
-                            Created = new DateTime(2022, 6, 26, 15, 6, 52, 416, DateTimeKind.Local).AddTicks(364),
+                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1536),
                             ProductId = 1,
                             Star = 4,
                             UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")
@@ -265,7 +265,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 3,
                             Content = "Chất lượng ổn",
-                            Created = new DateTime(2022, 6, 26, 15, 6, 52, 416, DateTimeKind.Local).AddTicks(365),
+                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1537),
                             ProductId = 2,
                             Star = 3,
                             UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
@@ -274,7 +274,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 4,
                             Content = "Tạm ổn",
-                            Created = new DateTime(2022, 6, 26, 15, 6, 52, 416, DateTimeKind.Local).AddTicks(366),
+                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1539),
                             ProductId = 2,
                             Star = 2,
                             UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")
@@ -283,7 +283,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 5,
                             Content = "Nồi tạm ổn",
-                            Created = new DateTime(2022, 6, 26, 15, 6, 52, 416, DateTimeKind.Local).AddTicks(367),
+                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1540),
                             ProductId = 3,
                             Star = 1,
                             UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
@@ -292,7 +292,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 6,
                             Content = "Tốt lắm",
-                            Created = new DateTime(2022, 6, 26, 15, 6, 52, 416, DateTimeKind.Local).AddTicks(369),
+                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1541),
                             ProductId = 7,
                             Star = 5,
                             UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")
@@ -301,7 +301,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 7,
                             Content = "Tàm tạm",
-                            Created = new DateTime(2022, 6, 26, 15, 6, 52, 416, DateTimeKind.Local).AddTicks(370),
+                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1543),
                             ProductId = 7,
                             Star = 3,
                             UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
@@ -310,7 +310,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 8,
                             Content = "Ổn áp",
-                            Created = new DateTime(2022, 6, 26, 15, 6, 52, 416, DateTimeKind.Local).AddTicks(372),
+                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1544),
                             ProductId = 8,
                             Star = 4,
                             UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")
@@ -319,7 +319,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 9,
                             Content = "Tốt",
-                            Created = new DateTime(2022, 6, 26, 15, 6, 52, 416, DateTimeKind.Local).AddTicks(373),
+                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1546),
                             ProductId = 9,
                             Star = 2,
                             UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
@@ -328,7 +328,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 10,
                             Content = "Sản phẩm ổn",
-                            Created = new DateTime(2022, 6, 26, 15, 6, 52, 416, DateTimeKind.Local).AddTicks(374),
+                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1547),
                             ProductId = 10,
                             Star = 3,
                             UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")
@@ -370,6 +370,54 @@ namespace Economic.Data.Migrations
                     b.HasIndex("AppUserId");
 
                     b.ToTable("Orders");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DeliveryDate = new DateTime(2021, 5, 21, 12, 45, 0, 0, DateTimeKind.Unspecified),
+                            OrderDate = new DateTime(2021, 5, 21, 12, 45, 0, 0, DateTimeKind.Unspecified),
+                            Status = 4,
+                            UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DeliveryDate = new DateTime(2021, 5, 22, 10, 50, 0, 0, DateTimeKind.Unspecified),
+                            OrderDate = new DateTime(2021, 5, 22, 13, 41, 0, 0, DateTimeKind.Unspecified),
+                            Status = 4,
+                            UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DeliveryDate = new DateTime(2021, 5, 23, 9, 34, 0, 0, DateTimeKind.Unspecified),
+                            OrderDate = new DateTime(2021, 5, 22, 15, 23, 0, 0, DateTimeKind.Unspecified),
+                            Status = 4,
+                            UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DeliveryDate = new DateTime(2021, 5, 23, 16, 23, 0, 0, DateTimeKind.Unspecified),
+                            OrderDate = new DateTime(2021, 5, 23, 12, 11, 0, 0, DateTimeKind.Unspecified),
+                            Status = 4,
+                            UserId = new Guid("bff91054-dc92-421e-a233-d1080f630928")
+                        },
+                        new
+                        {
+                            Id = 5,
+                            OrderDate = new DateTime(2021, 5, 24, 12, 11, 0, 0, DateTimeKind.Unspecified),
+                            Status = 2,
+                            UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
+                        },
+                        new
+                        {
+                            Id = 6,
+                            OrderDate = new DateTime(2021, 5, 24, 12, 30, 0, 0, DateTimeKind.Unspecified),
+                            Status = 2,
+                            UserId = new Guid("bff91054-dc92-421e-a233-d1080f630928")
+                        });
                 });
 
             modelBuilder.Entity("Economic.Data.Entities.OrderDetail", b =>
@@ -390,6 +438,56 @@ namespace Economic.Data.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("OrderDetails");
+
+                    b.HasData(
+                        new
+                        {
+                            OrderId = 1,
+                            ProductId = 1,
+                            Amount = 2
+                        },
+                        new
+                        {
+                            OrderId = 2,
+                            ProductId = 2,
+                            Amount = 1
+                        },
+                        new
+                        {
+                            OrderId = 3,
+                            ProductId = 3,
+                            Amount = 1
+                        },
+                        new
+                        {
+                            OrderId = 3,
+                            ProductId = 1,
+                            Amount = 2
+                        },
+                        new
+                        {
+                            OrderId = 4,
+                            ProductId = 1,
+                            Amount = 1
+                        },
+                        new
+                        {
+                            OrderId = 5,
+                            ProductId = 3,
+                            Amount = 1
+                        },
+                        new
+                        {
+                            OrderId = 5,
+                            ProductId = 2,
+                            Amount = 1
+                        },
+                        new
+                        {
+                            OrderId = 6,
+                            ProductId = 4,
+                            Amount = 1
+                        });
                 });
 
             modelBuilder.Entity("Economic.Data.Entities.Product", b =>

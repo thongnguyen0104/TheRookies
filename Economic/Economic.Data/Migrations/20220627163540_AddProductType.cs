@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Economic.Data.Migrations
 {
-    public partial class AddRole : Migration
+    public partial class AddProductType : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -116,6 +116,7 @@ namespace Economic.Data.Migrations
                     Name = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
                     Address = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     Avatar = table.Column<string>(type: "nvarchar(max)", nullable: false, defaultValue: "default-avatar.png"),
+                    RegisteredDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -145,6 +146,8 @@ namespace Economic.Data.Migrations
                     Name = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
                     Price = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ProductTypeId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -294,116 +297,6 @@ namespace Economic.Data.Migrations
                     { 6, "Sự lựa chọn tối ưu cho bửa xum họp gia đình", "Lẩu điện" },
                     { 7, "Những buổi tiệc nướng đầy ấm áp bên người thân được mang lại", "Bếp nướng" },
                     { 8, "Căn bếp đầy tiện nghi và sang trọng khi có mặt sản phẩm này", "Bếp hồng ngoại" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Roles",
-                columns: new[] { "Id", "ConcurrencyStamp", "Description", "Name", "NormalizedName" },
-                values: new object[,]
-                {
-                    { new Guid("54ba416f-6b89-4c53-873d-4fbd48506e6d"), "8b3d4159-dfb0-4515-8aa7-1a27111e2910", "Customer role", "customer", "customer" },
-                    { new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"), "c1edbd6e-ebab-4b6b-9a69-efac05e0e7ee", "Administrator role", "admin", "admin" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Products",
-                columns: new[] { "Id", "Description", "Name", "Price", "ProductTypeId" },
-                values: new object[,]
-                {
-                    { 1, "Nồi cơm nắp gài thiết kế đẹp mắt đáp ứng nhu cầu nấu cơm cơ bản; Nấu cơm chín nhanh chóng qua công nghệ nấu 1D, công suất 500W", "Nồi cơm nắp gài Kangaroo 1.5 lít KG825", 950000m, 1 },
-                    { 2, "Nấu cơm thơm ngon, chín đều nhờ công nghệ nấu gia nhiệt tuần hoàn; Gia nhiệt đều, nấu cơm nhanh, giữ ấm lâu với công suất 860W cùng lòng nồi dạng niêu", "Nồi cơm điện tử Joyoung 1.8 lít F-50FY13", 1790000m, 1 },
-                    { 3, "Nồi cơm nắp gài nhỏ gọn, đẹp mắt phù hợp cho nhu cầu nấu cơm cơ bản; Nấu cơm chín đều, tơi xốp, thơm ngon nhớ công nghệ nấu 1D, công suất 900W", "Nồi cơm nắp gài Kangaroo 2.2 lít KG829", 1150000m, 1 },
-                    { 4, "Nồi cơm nắp gài nhỏ gọn, đẹp mắt sử dụng cho nhu cầu nấu cơm cơ bản; Nấu cơm chín đều, tơi xốp, thơm ngon nhờ công nghệ nấu 3D", "Nồi cơm nắp gài Kangaroo 1.2 lít KG822", 900000m, 1 },
-                    { 5, "Nồi cơm nắp gài thiết kế đẹp mắt đáp ứng nhu cầu nấu cơm cơ bản; Nấu cơm chín nhanh đều, tơi xốp, thơm ngon nhờ công nghệ nấu 3D", "Nồi cơm nắp gài Delites 1.8 lít NCG1010", 790000m, 1 },
-                    { 6, "Nồi cơm nắp gài thiết kế nổi bật phù hợp cho nhu cầu nấu cơm cơ bản; Cơm nấu nhín ngon, nhanh chóng qua công nghệ nấu 1D, công suất 700W", "Nồi cơm nắp gài Kangaroo 2.2 lít KG572", 890000m, 1 },
-                    { 7, "Thiết kế đơn giản, màu sắc trẻ trung; Công nghệ nấu 1D, công suất 700W truyền nhiệt từ đáy nồi, cơm chín nhanh", "Nồi cơm nắp gài Ava 1.8 lít NCG1806", 720000m, 1 },
-                    { 8, "Thiết kế màu cam tơi tắn, nhỏ gọn; Công nghệ nấu 1D nấu chín từ 20 - 30 phút", "Nồi cơm điện Midea 0.6 lít MR-CM06SD", 590000m, 1 },
-                    { 9, "Đáp ứng nhu cầu pha cà phê, nấu mì… với dung tích 1.5 lít; Nấu nước sôi nhanh 5- 7  phút với công suất 1500W", "Bình đun siêu tốc Delites 1.5 lít ST15S01", 170000m, 2 },
-                    { 10, "Nấu cơm thơm ngon, chín đều nhờ công nghệ nấu gia nhiệt tuần hoàn; Gia nhiệt đều, nấu cơm nhanh, giữ ấm lâu với công suất 860W cùng lòng nồi dạng niêu", "Nồi cơm điện tử Joyoung 1.8 lít F-50FY13", 1790000m, 2 },
-                    { 11, "Nồi cơm nắp gài nhỏ gọn, đẹp mắt phù hợp cho nhu cầu nấu cơm cơ bản; Nấu cơm chín đều, tơi xốp, thơm ngon nhớ công nghệ nấu 1D, công suất 900W", "Nồi cơm nắp gài Kangaroo 2.2 lít KG829", 1150000m, 2 },
-                    { 12, "Nồi cơm nắp gài nhỏ gọn, đẹp mắt sử dụng cho nhu cầu nấu cơm cơ bản; Nấu cơm chín đều, tơi xốp, thơm ngon nhờ công nghệ nấu 3D", "Nồi cơm nắp gài Kangaroo 1.2 lít KG822", 900000m, 2 },
-                    { 13, "Nồi cơm nắp gài thiết kế đẹp mắt đáp ứng nhu cầu nấu cơm cơ bản; Nấu cơm chín nhanh đều, tơi xốp, thơm ngon nhờ công nghệ nấu 3D", "Nồi cơm nắp gài Delites 1.8 lít NCG1010", 790000m, 2 },
-                    { 14, "Nồi cơm nắp gài thiết kế nổi bật phù hợp cho nhu cầu nấu cơm cơ bản; Cơm nấu nhín ngon, nhanh chóng qua công nghệ nấu 1D, công suất 700W", "Nồi cơm nắp gài Kangaroo 2.2 lít KG572", 890000m, 2 },
-                    { 15, "Thiết kế đơn giản, màu sắc trẻ trung; Công nghệ nấu 1D, công suất 700W truyền nhiệt từ đáy nồi, cơm chín nhanh", "Nồi cơm nắp gài Ava 1.8 lít NCG1806", 720000m, 2 },
-                    { 16, "Thiết kế màu cam tơi tắn, nhỏ gọn; Công nghệ nấu 1D nấu chín từ 20 - 30 phút", "Nồi cơm điện Midea 0.6 lít MR-CM06SD", 590000m, 2 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "ProductImages",
-                columns: new[] { "Id", "ProductId", "ProductPath" },
-                values: new object[,]
-                {
-                    { 1, 1, "1.jpg" },
-                    { 2, 1, "1.1.jpg" },
-                    { 3, 1, "1.2.jpg" },
-                    { 4, 1, "1.3.jpg" },
-                    { 5, 2, "2.jpg" },
-                    { 6, 2, "2.1.jpg" },
-                    { 7, 2, "2.2.jpg" },
-                    { 8, 2, "2.3.jpg" },
-                    { 9, 3, "3.jpg" },
-                    { 10, 3, "3.1.jpg" },
-                    { 11, 3, "3.2.jpg" },
-                    { 12, 3, "3.3.jpg" },
-                    { 13, 4, "4.jpg" },
-                    { 14, 4, "4.1.jpg" },
-                    { 15, 4, "4.2.jpg" },
-                    { 16, 4, "4.3.jpg" },
-                    { 17, 5, "5.jpg" },
-                    { 18, 5, "5.1.jpg" },
-                    { 19, 5, "5.2.jpg" },
-                    { 20, 5, "5.3.jpg" },
-                    { 21, 6, "6.jpg" },
-                    { 22, 6, "6.1.jpg" },
-                    { 23, 6, "6.2.jpg" },
-                    { 24, 6, "6.3.jpg" },
-                    { 25, 7, "7.jpg" },
-                    { 26, 7, "7.1.jpg" },
-                    { 27, 7, "7.2.jpg" },
-                    { 28, 7, "7.3.jpg" },
-                    { 29, 8, "8.jpg" },
-                    { 30, 8, "8.1.jpg" },
-                    { 31, 8, "8.2.jpg" },
-                    { 32, 8, "8.3.jpg" },
-                    { 33, 9, "9.jpg" },
-                    { 34, 9, "9.1.jpg" },
-                    { 35, 9, "9.2.jpg" },
-                    { 36, 9, "9.3.jpg" },
-                    { 37, 10, "10.jpg" },
-                    { 38, 10, "10.1.jpg" },
-                    { 39, 10, "10.2.jpg" },
-                    { 40, 10, "10.3.jpg" },
-                    { 41, 11, "11.jpg" },
-                    { 42, 11, "11.1.jpg" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "ProductImages",
-                columns: new[] { "Id", "ProductId", "ProductPath" },
-                values: new object[,]
-                {
-                    { 43, 11, "11.2.jpg" },
-                    { 44, 11, "11.3.jpg" },
-                    { 45, 12, "12.jpg" },
-                    { 46, 12, "12.1.jpg" },
-                    { 47, 12, "12.2.jpg" },
-                    { 48, 12, "12.3.jpg" },
-                    { 49, 13, "13.jpg" },
-                    { 50, 13, "13.1.jpg" },
-                    { 51, 13, "13.2.jpg" },
-                    { 52, 13, "13.3.jpg" },
-                    { 53, 14, "14.jpg" },
-                    { 54, 14, "14.1.jpg" },
-                    { 55, 14, "14.2.jpg" },
-                    { 56, 14, "14.3.jpg" },
-                    { 57, 15, "15.jpg" },
-                    { 58, 15, "15.1.jpg" },
-                    { 59, 15, "15.2.jpg" },
-                    { 60, 15, "15.3.jpg" },
-                    { 61, 16, "16.jpg" },
-                    { 62, 16, "16.1.jpg" },
-                    { 63, 16, "16.2.jpg" },
-                    { 64, 16, "16.3.jpg" }
                 });
 
             migrationBuilder.CreateIndex(
