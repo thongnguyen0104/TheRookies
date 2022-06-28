@@ -5,22 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Economic.Data.Migrations
 {
-    public partial class AddProduct1 : Migration
+    public partial class AddDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "RegisteredDate",
-                table: "Users");
-
-            migrationBuilder.DropColumn(
-                name: "CreatedDate",
-                table: "Products");
-
-            migrationBuilder.DropColumn(
-                name: "UpdatedDate",
-                table: "Products");
-
             migrationBuilder.InsertData(
                 table: "AppUserRole",
                 columns: new[] { "RoleId", "UserId" },
@@ -42,6 +30,95 @@ namespace Economic.Data.Migrations
                     { 4, null, null, new DateTime(2021, 5, 23, 16, 23, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 5, 23, 12, 11, 0, 0, DateTimeKind.Unspecified), null, 4, new Guid("bff91054-dc92-421e-a233-d1080f630928") },
                     { 5, null, null, null, new DateTime(2021, 5, 24, 12, 11, 0, 0, DateTimeKind.Unspecified), null, 2, new Guid("bff91064-dc92-421e-a233-d1080f630928") },
                     { 6, null, null, null, new DateTime(2021, 5, 24, 12, 30, 0, 0, DateTimeKind.Unspecified), null, 2, new Guid("bff91054-dc92-421e-a233-d1080f630928") }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ProductTypes",
+                columns: new[] { "Id", "Description", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Mang đến những bửa cơm đầy dinh dưỡng cho gia đình bạn", "Nồi cơm điện" },
+                    { 2, "Giải pháp hiệu quả cho người bận rộn", "Ấm đun siêu tốc" },
+                    { 3, "Lựa chọn tốt nhất hàng đàu mang lại vitamin trái cây", "Máy xay sinh tố" },
+                    { 4, "Chắc lọc sự tinh túy từ thiện nhiên trong ly nước ép", "Máy ép trái cây" },
+                    { 5, "Cắt giảm lượng dầu mỡ tối đa cho gia đình bạn", "Nồi chiên không dầu" },
+                    { 6, "Sự lựa chọn tối ưu cho bửa xum họp gia đình", "Lẩu điện" },
+                    { 7, "Những buổi tiệc nướng đầy ấm áp bên người thân được mang lại", "Bếp nướng" },
+                    { 8, "Căn bếp đầy tiện nghi và sang trọng khi có mặt sản phẩm này", "Bếp hồng ngoại" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Roles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Description", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { new Guid("54ba416f-6b89-4c53-873d-4fbd48506e6d"), "3e7ae986-b6ea-4e57-a4da-36c367a20c3b", "Customer role", "customer", "customer" },
+                    { new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"), "31f38468-f3de-42b5-af2d-c612558dc9cd", "Administrator role", "admin", "admin" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "AccessFailedCount", "Address", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "RegisteredDate", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[,]
+                {
+                    { new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"), 0, "Vinh Long", "75a77216-b988-4bf7-bc2e-683728c583fd", "thong@gmail.com", true, false, null, "Nguyen Hoang Thong", "thong@gmail.com", "admin", "AQAAAAEAACcQAAAAEAn3+PYak4S6/gO9TL3c/9Wt+BcEXg0+/NfHUbVJTiIYgD3OGV8uDt+OXQ16Z4xoJQ==", null, false, new DateTime(2022, 6, 28, 9, 20, 42, 751, DateTimeKind.Local).AddTicks(9106), "", false, "admin" },
+                    { new Guid("bff91054-dc92-421e-a233-d1080f630928"), 0, "TP HCM", "cd61fb9e-7070-4ef6-9b8c-2dd3807d764c", "customer2@gmail.com", true, false, null, "David", "customer2@gmail.com", "customer", "AQAAAAEAACcQAAAAEMczglLuZYhKCyGAHYsCdX/rTIo2pNLDIrY/CYxIsiXnDwG3lqq5bs2v7ueWdafIbw==", null, false, new DateTime(2022, 6, 28, 9, 20, 42, 755, DateTimeKind.Local).AddTicks(2289), "", false, "customer2" },
+                    { new Guid("bff91064-dc92-421e-a233-d1080f630928"), 0, "Can Tho", "bfd391d5-a852-4f66-a948-486f4ca08ae8", "customer1@gmail.com", true, false, null, "Nguyen Hoang Thong Customer", "customer1@gmail.com", "customer", "AQAAAAEAACcQAAAAENs98V6vd/wbRB9BmGTbTPLJUR9FTaJ5pZ6CS+r1Vna1q5ePQ0OoOoILq442WgDrJg==", null, false, new DateTime(2022, 6, 28, 9, 20, 42, 753, DateTimeKind.Local).AddTicks(5629), "", false, "customer1" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "Id", "CreatedDate", "Description", "Name", "Price", "ProductTypeId", "UpdatedDate" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2190), "Nồi cơm nắp gài thiết kế đẹp mắt đáp ứng nhu cầu nấu cơm cơ bản; Nấu cơm chín nhanh chóng qua công nghệ nấu 1D, công suất 500W", "Nồi cơm nắp gài Kangaroo 1.5 lít KG825", 950000m, 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 2, new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2202), "Nấu cơm thơm ngon, chín đều nhờ công nghệ nấu gia nhiệt tuần hoàn; Gia nhiệt đều, nấu cơm nhanh, giữ ấm lâu với công suất 860W cùng lòng nồi dạng niêu", "Nồi cơm điện tử Joyoung 1.8 lít F-50FY13", 1790000m, 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 3, new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2203), "Nồi cơm nắp gài nhỏ gọn, đẹp mắt phù hợp cho nhu cầu nấu cơm cơ bản; Nấu cơm chín đều, tơi xốp, thơm ngon nhớ công nghệ nấu 1D, công suất 900W", "Nồi cơm nắp gài Kangaroo 2.2 lít KG829", 1150000m, 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 4, new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2205), "Nồi cơm nắp gài nhỏ gọn, đẹp mắt sử dụng cho nhu cầu nấu cơm cơ bản; Nấu cơm chín đều, tơi xốp, thơm ngon nhờ công nghệ nấu 3D", "Nồi cơm nắp gài Kangaroo 1.2 lít KG822", 900000m, 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 5, new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2206), "Nồi cơm nắp gài thiết kế đẹp mắt đáp ứng nhu cầu nấu cơm cơ bản; Nấu cơm chín nhanh đều, tơi xốp, thơm ngon nhờ công nghệ nấu 3D", "Nồi cơm nắp gài Delites 1.8 lít NCG1010", 790000m, 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 6, new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2207), "Nồi cơm nắp gài thiết kế nổi bật phù hợp cho nhu cầu nấu cơm cơ bản; Cơm nấu nhín ngon, nhanh chóng qua công nghệ nấu 1D, công suất 700W", "Nồi cơm nắp gài Kangaroo 2.2 lít KG572", 890000m, 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 7, new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2208), "Thiết kế đơn giản, màu sắc trẻ trung; Công nghệ nấu 1D, công suất 700W truyền nhiệt từ đáy nồi, cơm chín nhanh", "Nồi cơm nắp gài Ava 1.8 lít NCG1806", 720000m, 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 8, new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2209), "Thiết kế màu cam tơi tắn, nhỏ gọn; Công nghệ nấu 1D nấu chín từ 20 - 30 phút", "Nồi cơm điện Midea 0.6 lít MR-CM06SD", 590000m, 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 9, new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2210), "Đáp ứng nhu cầu pha cà phê, nấu mì… với dung tích 1.5 lít; Nấu nước sôi nhanh 5- 7  phút với công suất 1500W", "Bình đun siêu tốc Delites 1.5 lít ST15S01", 170000m, 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 10, new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2210), "Nấu cơm thơm ngon, chín đều nhờ công nghệ nấu gia nhiệt tuần hoàn; Gia nhiệt đều, nấu cơm nhanh, giữ ấm lâu với công suất 860W cùng lòng nồi dạng niêu", "Nồi cơm điện tử Joyoung 1.8 lít F-50FY13", 1790000m, 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 11, new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2211), "Nồi cơm nắp gài nhỏ gọn, đẹp mắt phù hợp cho nhu cầu nấu cơm cơ bản; Nấu cơm chín đều, tơi xốp, thơm ngon nhớ công nghệ nấu 1D, công suất 900W", "Nồi cơm nắp gài Kangaroo 2.2 lít KG829", 1150000m, 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 12, new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2212), "Nồi cơm nắp gài nhỏ gọn, đẹp mắt sử dụng cho nhu cầu nấu cơm cơ bản; Nấu cơm chín đều, tơi xốp, thơm ngon nhờ công nghệ nấu 3D", "Nồi cơm nắp gài Kangaroo 1.2 lít KG822", 900000m, 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 13, new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2213), "Nồi cơm nắp gài thiết kế đẹp mắt đáp ứng nhu cầu nấu cơm cơ bản; Nấu cơm chín nhanh đều, tơi xốp, thơm ngon nhờ công nghệ nấu 3D", "Nồi cơm nắp gài Delites 1.8 lít NCG1010", 790000m, 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 14, new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2214), "Nồi cơm nắp gài thiết kế nổi bật phù hợp cho nhu cầu nấu cơm cơ bản; Cơm nấu nhín ngon, nhanh chóng qua công nghệ nấu 1D, công suất 700W", "Nồi cơm nắp gài Kangaroo 2.2 lít KG572", 890000m, 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 15, new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2217), "Thiết kế đơn giản, màu sắc trẻ trung; Công nghệ nấu 1D, công suất 700W truyền nhiệt từ đáy nồi, cơm chín nhanh", "Nồi cơm nắp gài Ava 1.8 lít NCG1806", 720000m, 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 16, new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2218), "Thiết kế màu cam tơi tắn, nhỏ gọn; Công nghệ nấu 1D nấu chín từ 20 - 30 phút", "Nồi cơm điện Midea 0.6 lít MR-CM06SD", 590000m, 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Comments",
+                columns: new[] { "Id", "Content", "Created", "ProductId", "Star", "UserId" },
+                values: new object[,]
+                {
+                    { 1, "Nồi tạm ổn", new DateTime(2022, 6, 28, 9, 20, 42, 755, DateTimeKind.Local).AddTicks(2320), 1, 5, new Guid("bff91064-dc92-421e-a233-d1080f630928") },
+                    { 2, "Sản phẩm tốt", new DateTime(2022, 6, 28, 9, 20, 42, 755, DateTimeKind.Local).AddTicks(2322), 1, 4, new Guid("69bd714f-9576-45ba-b5b7-f00649be00de") },
+                    { 3, "Chất lượng ổn", new DateTime(2022, 6, 28, 9, 20, 42, 755, DateTimeKind.Local).AddTicks(2323), 2, 3, new Guid("bff91064-dc92-421e-a233-d1080f630928") },
+                    { 4, "Tạm ổn", new DateTime(2022, 6, 28, 9, 20, 42, 755, DateTimeKind.Local).AddTicks(2325), 2, 2, new Guid("69bd714f-9576-45ba-b5b7-f00649be00de") },
+                    { 5, "Nồi tạm ổn", new DateTime(2022, 6, 28, 9, 20, 42, 755, DateTimeKind.Local).AddTicks(2326), 3, 1, new Guid("bff91064-dc92-421e-a233-d1080f630928") },
+                    { 6, "Tốt lắm", new DateTime(2022, 6, 28, 9, 20, 42, 755, DateTimeKind.Local).AddTicks(2328), 7, 5, new Guid("69bd714f-9576-45ba-b5b7-f00649be00de") },
+                    { 7, "Tàm tạm", new DateTime(2022, 6, 28, 9, 20, 42, 755, DateTimeKind.Local).AddTicks(2329), 7, 3, new Guid("bff91064-dc92-421e-a233-d1080f630928") },
+                    { 8, "Ổn áp", new DateTime(2022, 6, 28, 9, 20, 42, 755, DateTimeKind.Local).AddTicks(2331), 8, 4, new Guid("69bd714f-9576-45ba-b5b7-f00649be00de") },
+                    { 9, "Tốt", new DateTime(2022, 6, 28, 9, 20, 42, 755, DateTimeKind.Local).AddTicks(2332), 9, 2, new Guid("bff91064-dc92-421e-a233-d1080f630928") },
+                    { 10, "Sản phẩm ổn", new DateTime(2022, 6, 28, 9, 20, 42, 755, DateTimeKind.Local).AddTicks(2333), 10, 3, new Guid("69bd714f-9576-45ba-b5b7-f00649be00de") }
+                });
+
+            migrationBuilder.InsertData(
+                table: "OrderDetails",
+                columns: new[] { "OrderId", "ProductId", "Amount" },
+                values: new object[,]
+                {
+                    { 1, 1, 2 },
+                    { 2, 2, 1 },
+                    { 3, 1, 2 },
+                    { 3, 3, 1 },
+                    { 4, 1, 1 },
+                    { 5, 2, 1 },
+                    { 5, 3, 1 },
+                    { 6, 4, 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -72,7 +149,14 @@ namespace Economic.Data.Migrations
                     { 21, 6, "6.jpg" },
                     { 22, 6, "6.1.jpg" },
                     { 23, 6, "6.2.jpg" },
-                    { 24, 6, "6.3.jpg" },
+                    { 24, 6, "6.3.jpg" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ProductImages",
+                columns: new[] { "Id", "ProductId", "ProductPath" },
+                values: new object[,]
+                {
                     { 25, 7, "7.jpg" },
                     { 26, 7, "7.1.jpg" },
                     { 27, 7, "7.2.jpg" },
@@ -81,14 +165,7 @@ namespace Economic.Data.Migrations
                     { 30, 8, "8.1.jpg" },
                     { 31, 8, "8.2.jpg" },
                     { 32, 8, "8.3.jpg" },
-                    { 33, 9, "9.jpg" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "ProductImages",
-                columns: new[] { "Id", "ProductId", "ProductPath" },
-                values: new object[,]
-                {
+                    { 33, 9, "9.jpg" },
                     { 34, 9, "9.1.jpg" },
                     { 35, 9, "9.2.jpg" },
                     { 36, 9, "9.3.jpg" },
@@ -120,57 +197,6 @@ namespace Economic.Data.Migrations
                     { 62, 16, "16.1.jpg" },
                     { 63, 16, "16.2.jpg" },
                     { 64, 16, "16.3.jpg" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Roles",
-                columns: new[] { "Id", "ConcurrencyStamp", "Description", "Name", "NormalizedName" },
-                values: new object[,]
-                {
-                    { new Guid("54ba416f-6b89-4c53-873d-4fbd48506e6d"), "2cd78571-e5cc-4a7e-9a77-ba18621195c9", "Customer role", "customer", "customer" },
-                    { new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"), "4584303a-f9e8-41fa-bc6b-2e481dda5f77", "Administrator role", "admin", "admin" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Users",
-                columns: new[] { "Id", "AccessFailedCount", "Address", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[,]
-                {
-                    { new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"), 0, "Vinh Long", "ef5f16a4-ae38-4604-9edc-9b5e04cbd46d", "thong@gmail.com", true, false, null, "Nguyen Hoang Thong", "thong@gmail.com", "admin", "AQAAAAEAACcQAAAAEHCVrCwZAlYUh3GgkOfHioIESN5jtcByXcY7iswv7YKjjtZWFxJMAMj7lNBORuB0Gg==", null, false, "", false, "admin" },
-                    { new Guid("bff91054-dc92-421e-a233-d1080f630928"), 0, "TP HCM", "ce65c1c0-8e8f-47df-9783-610cea761fd2", "customer2@gmail.com", true, false, null, "David", "customer2@gmail.com", "customer", "AQAAAAEAACcQAAAAEIVChlYlYVZvu9wMBWYwH5d+4TUcNZjZ3b1elhXu48K3GpGXLR6P5LUnyOC5wbRhfg==", null, false, "", false, "customer2" },
-                    { new Guid("bff91064-dc92-421e-a233-d1080f630928"), 0, "Can Tho", "d59eaf8d-2ead-4726-a755-03f26337110c", "customer1@gmail.com", true, false, null, "Nguyen Hoang Thong Customer", "customer1@gmail.com", "customer", "AQAAAAEAACcQAAAAEBA0ZJtvO6P2lzWUc4esj0/07taWrGw5AjKVcfm1ISTjGdBwg3FZxN5GIro4z/5Cmw==", null, false, "", false, "customer1" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Comments",
-                columns: new[] { "Id", "Content", "Created", "ProductId", "Star", "UserId" },
-                values: new object[,]
-                {
-                    { 1, "Nồi tạm ổn", new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1522), 1, 5, new Guid("bff91064-dc92-421e-a233-d1080f630928") },
-                    { 2, "Sản phẩm tốt", new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1536), 1, 4, new Guid("69bd714f-9576-45ba-b5b7-f00649be00de") },
-                    { 3, "Chất lượng ổn", new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1537), 2, 3, new Guid("bff91064-dc92-421e-a233-d1080f630928") },
-                    { 4, "Tạm ổn", new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1539), 2, 2, new Guid("69bd714f-9576-45ba-b5b7-f00649be00de") },
-                    { 5, "Nồi tạm ổn", new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1540), 3, 1, new Guid("bff91064-dc92-421e-a233-d1080f630928") },
-                    { 6, "Tốt lắm", new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1541), 7, 5, new Guid("69bd714f-9576-45ba-b5b7-f00649be00de") },
-                    { 7, "Tàm tạm", new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1543), 7, 3, new Guid("bff91064-dc92-421e-a233-d1080f630928") },
-                    { 8, "Ổn áp", new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1544), 8, 4, new Guid("69bd714f-9576-45ba-b5b7-f00649be00de") },
-                    { 9, "Tốt", new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1546), 9, 2, new Guid("bff91064-dc92-421e-a233-d1080f630928") },
-                    { 10, "Sản phẩm ổn", new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1547), 10, 3, new Guid("69bd714f-9576-45ba-b5b7-f00649be00de") }
-                });
-
-            migrationBuilder.InsertData(
-                table: "OrderDetails",
-                columns: new[] { "OrderId", "ProductId", "Amount" },
-                values: new object[,]
-                {
-                    { 1, 1, 2 },
-                    { 2, 2, 1 },
-                    { 3, 1, 2 },
-                    { 3, 3, 1 },
-                    { 4, 1, 1 },
-                    { 5, 2, 1 },
-                    { 5, 3, 1 },
-                    { 6, 4, 1 }
                 });
         }
 
@@ -602,6 +628,36 @@ namespace Economic.Data.Migrations
                 keyValue: 64);
 
             migrationBuilder.DeleteData(
+                table: "ProductTypes",
+                keyColumn: "Id",
+                keyValue: 3);
+
+            migrationBuilder.DeleteData(
+                table: "ProductTypes",
+                keyColumn: "Id",
+                keyValue: 4);
+
+            migrationBuilder.DeleteData(
+                table: "ProductTypes",
+                keyColumn: "Id",
+                keyValue: 5);
+
+            migrationBuilder.DeleteData(
+                table: "ProductTypes",
+                keyColumn: "Id",
+                keyValue: 6);
+
+            migrationBuilder.DeleteData(
+                table: "ProductTypes",
+                keyColumn: "Id",
+                keyValue: 7);
+
+            migrationBuilder.DeleteData(
+                table: "ProductTypes",
+                keyColumn: "Id",
+                keyValue: 8);
+
+            migrationBuilder.DeleteData(
                 table: "Roles",
                 keyColumn: "Id",
                 keyValue: new Guid("54ba416f-6b89-4c53-873d-4fbd48506e6d"));
@@ -647,6 +703,86 @@ namespace Economic.Data.Migrations
                 keyValue: 6);
 
             migrationBuilder.DeleteData(
+                table: "Products",
+                keyColumn: "Id",
+                keyValue: 1);
+
+            migrationBuilder.DeleteData(
+                table: "Products",
+                keyColumn: "Id",
+                keyValue: 2);
+
+            migrationBuilder.DeleteData(
+                table: "Products",
+                keyColumn: "Id",
+                keyValue: 3);
+
+            migrationBuilder.DeleteData(
+                table: "Products",
+                keyColumn: "Id",
+                keyValue: 4);
+
+            migrationBuilder.DeleteData(
+                table: "Products",
+                keyColumn: "Id",
+                keyValue: 5);
+
+            migrationBuilder.DeleteData(
+                table: "Products",
+                keyColumn: "Id",
+                keyValue: 6);
+
+            migrationBuilder.DeleteData(
+                table: "Products",
+                keyColumn: "Id",
+                keyValue: 7);
+
+            migrationBuilder.DeleteData(
+                table: "Products",
+                keyColumn: "Id",
+                keyValue: 8);
+
+            migrationBuilder.DeleteData(
+                table: "Products",
+                keyColumn: "Id",
+                keyValue: 9);
+
+            migrationBuilder.DeleteData(
+                table: "Products",
+                keyColumn: "Id",
+                keyValue: 10);
+
+            migrationBuilder.DeleteData(
+                table: "Products",
+                keyColumn: "Id",
+                keyValue: 11);
+
+            migrationBuilder.DeleteData(
+                table: "Products",
+                keyColumn: "Id",
+                keyValue: 12);
+
+            migrationBuilder.DeleteData(
+                table: "Products",
+                keyColumn: "Id",
+                keyValue: 13);
+
+            migrationBuilder.DeleteData(
+                table: "Products",
+                keyColumn: "Id",
+                keyValue: 14);
+
+            migrationBuilder.DeleteData(
+                table: "Products",
+                keyColumn: "Id",
+                keyValue: 15);
+
+            migrationBuilder.DeleteData(
+                table: "Products",
+                keyColumn: "Id",
+                keyValue: 16);
+
+            migrationBuilder.DeleteData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"));
@@ -656,138 +792,15 @@ namespace Economic.Data.Migrations
                 keyColumn: "Id",
                 keyValue: new Guid("bff91064-dc92-421e-a233-d1080f630928"));
 
-            migrationBuilder.AddColumn<DateTime>(
-                name: "RegisteredDate",
-                table: "Users",
-                type: "datetime2",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
-
-            migrationBuilder.AddColumn<DateTime>(
-                name: "CreatedDate",
-                table: "Products",
-                type: "datetime2",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
-
-            migrationBuilder.AddColumn<DateTime>(
-                name: "UpdatedDate",
-                table: "Products",
-                type: "datetime2",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
-
-            migrationBuilder.UpdateData(
-                table: "Products",
+            migrationBuilder.DeleteData(
+                table: "ProductTypes",
                 keyColumn: "Id",
-                keyValue: 1,
-                column: "CreatedDate",
-                value: new DateTime(2022, 6, 27, 23, 37, 31, 509, DateTimeKind.Local).AddTicks(3888));
+                keyValue: 1);
 
-            migrationBuilder.UpdateData(
-                table: "Products",
+            migrationBuilder.DeleteData(
+                table: "ProductTypes",
                 keyColumn: "Id",
-                keyValue: 2,
-                column: "CreatedDate",
-                value: new DateTime(2022, 6, 27, 23, 37, 31, 509, DateTimeKind.Local).AddTicks(3900));
-
-            migrationBuilder.UpdateData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: 3,
-                column: "CreatedDate",
-                value: new DateTime(2022, 6, 27, 23, 37, 31, 509, DateTimeKind.Local).AddTicks(3902));
-
-            migrationBuilder.UpdateData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: 4,
-                column: "CreatedDate",
-                value: new DateTime(2022, 6, 27, 23, 37, 31, 509, DateTimeKind.Local).AddTicks(3903));
-
-            migrationBuilder.UpdateData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: 5,
-                column: "CreatedDate",
-                value: new DateTime(2022, 6, 27, 23, 37, 31, 509, DateTimeKind.Local).AddTicks(3904));
-
-            migrationBuilder.UpdateData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: 6,
-                column: "CreatedDate",
-                value: new DateTime(2022, 6, 27, 23, 37, 31, 509, DateTimeKind.Local).AddTicks(3905));
-
-            migrationBuilder.UpdateData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: 7,
-                column: "CreatedDate",
-                value: new DateTime(2022, 6, 27, 23, 37, 31, 509, DateTimeKind.Local).AddTicks(3906));
-
-            migrationBuilder.UpdateData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: 8,
-                column: "CreatedDate",
-                value: new DateTime(2022, 6, 27, 23, 37, 31, 509, DateTimeKind.Local).AddTicks(3907));
-
-            migrationBuilder.UpdateData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: 9,
-                column: "CreatedDate",
-                value: new DateTime(2022, 6, 27, 23, 37, 31, 509, DateTimeKind.Local).AddTicks(3908));
-
-            migrationBuilder.UpdateData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: 10,
-                column: "CreatedDate",
-                value: new DateTime(2022, 6, 27, 23, 37, 31, 509, DateTimeKind.Local).AddTicks(3909));
-
-            migrationBuilder.UpdateData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: 11,
-                column: "CreatedDate",
-                value: new DateTime(2022, 6, 27, 23, 37, 31, 509, DateTimeKind.Local).AddTicks(3910));
-
-            migrationBuilder.UpdateData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: 12,
-                column: "CreatedDate",
-                value: new DateTime(2022, 6, 27, 23, 37, 31, 509, DateTimeKind.Local).AddTicks(3911));
-
-            migrationBuilder.UpdateData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: 13,
-                column: "CreatedDate",
-                value: new DateTime(2022, 6, 27, 23, 37, 31, 509, DateTimeKind.Local).AddTicks(3912));
-
-            migrationBuilder.UpdateData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: 14,
-                column: "CreatedDate",
-                value: new DateTime(2022, 6, 27, 23, 37, 31, 509, DateTimeKind.Local).AddTicks(3913));
-
-            migrationBuilder.UpdateData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: 15,
-                column: "CreatedDate",
-                value: new DateTime(2022, 6, 27, 23, 37, 31, 509, DateTimeKind.Local).AddTicks(3914));
-
-            migrationBuilder.UpdateData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: 16,
-                column: "CreatedDate",
-                value: new DateTime(2022, 6, 27, 23, 37, 31, 509, DateTimeKind.Local).AddTicks(3915));
+                keyValue: 2);
         }
     }
 }

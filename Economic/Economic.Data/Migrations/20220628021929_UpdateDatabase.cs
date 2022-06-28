@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Economic.Data.Migrations
 {
-    public partial class AddProductType : Migration
+    public partial class UpdateDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -146,7 +146,7 @@ namespace Economic.Data.Migrations
                     Name = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
                     Price = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ProductTypeId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -282,21 +282,6 @@ namespace Economic.Data.Migrations
                         principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.InsertData(
-                table: "ProductTypes",
-                columns: new[] { "Id", "Description", "Name" },
-                values: new object[,]
-                {
-                    { 1, "Mang đến những bửa cơm đầy dinh dưỡng cho gia đình bạn", "Nồi cơm điện" },
-                    { 2, "Giải pháp hiệu quả cho người bận rộn", "Ấm đun siêu tốc" },
-                    { 3, "Lựa chọn tốt nhất hàng đàu mang lại vitamin trái cây", "Máy xay sinh tố" },
-                    { 4, "Chắc lọc sự tinh túy từ thiện nhiên trong ly nước ép", "Máy ép trái cây" },
-                    { 5, "Cắt giảm lượng dầu mỡ tối đa cho gia đình bạn", "Nồi chiên không dầu" },
-                    { 6, "Sự lựa chọn tối ưu cho bửa xum họp gia đình", "Lẩu điện" },
-                    { 7, "Những buổi tiệc nướng đầy ấm áp bên người thân được mang lại", "Bếp nướng" },
-                    { 8, "Căn bếp đầy tiện nghi và sang trọng khi có mặt sản phẩm này", "Bếp hồng ngoại" }
                 });
 
             migrationBuilder.CreateIndex(

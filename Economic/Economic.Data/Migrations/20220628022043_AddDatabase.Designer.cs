@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Economic.Data.Migrations
 {
     [DbContext(typeof(EconomicDbContext))]
-    [Migration("20220627164321_AddProduct1")]
-    partial class AddProduct1
+    [Migration("20220628022043_AddDatabase")]
+    partial class AddDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -51,7 +51,7 @@ namespace Economic.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "4584303a-f9e8-41fa-bc6b-2e481dda5f77",
+                            ConcurrencyStamp = "31f38468-f3de-42b5-af2d-c612558dc9cd",
                             Description = "Administrator role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -59,7 +59,7 @@ namespace Economic.Data.Migrations
                         new
                         {
                             Id = new Guid("54ba416f-6b89-4c53-873d-4fbd48506e6d"),
-                            ConcurrencyStamp = "2cd78571-e5cc-4a7e-9a77-ba18621195c9",
+                            ConcurrencyStamp = "3e7ae986-b6ea-4e57-a4da-36c367a20c3b",
                             Description = "Customer role",
                             Name = "customer",
                             NormalizedName = "customer"
@@ -120,6 +120,10 @@ namespace Economic.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<DateTime?>("RegisteredDate")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -139,15 +143,16 @@ namespace Economic.Data.Migrations
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
                             Address = "Vinh Long",
-                            ConcurrencyStamp = "ef5f16a4-ae38-4604-9edc-9b5e04cbd46d",
+                            ConcurrencyStamp = "75a77216-b988-4bf7-bc2e-683728c583fd",
                             Email = "thong@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             Name = "Nguyen Hoang Thong",
                             NormalizedEmail = "thong@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHCVrCwZAlYUh3GgkOfHioIESN5jtcByXcY7iswv7YKjjtZWFxJMAMj7lNBORuB0Gg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAn3+PYak4S6/gO9TL3c/9Wt+BcEXg0+/NfHUbVJTiIYgD3OGV8uDt+OXQ16Z4xoJQ==",
                             PhoneNumberConfirmed = false,
+                            RegisteredDate = new DateTime(2022, 6, 28, 9, 20, 42, 751, DateTimeKind.Local).AddTicks(9106),
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
                             UserName = "admin"
@@ -157,15 +162,16 @@ namespace Economic.Data.Migrations
                             Id = new Guid("bff91064-dc92-421e-a233-d1080f630928"),
                             AccessFailedCount = 0,
                             Address = "Can Tho",
-                            ConcurrencyStamp = "d59eaf8d-2ead-4726-a755-03f26337110c",
+                            ConcurrencyStamp = "bfd391d5-a852-4f66-a948-486f4ca08ae8",
                             Email = "customer1@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             Name = "Nguyen Hoang Thong Customer",
                             NormalizedEmail = "customer1@gmail.com",
                             NormalizedUserName = "customer",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBA0ZJtvO6P2lzWUc4esj0/07taWrGw5AjKVcfm1ISTjGdBwg3FZxN5GIro4z/5Cmw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENs98V6vd/wbRB9BmGTbTPLJUR9FTaJ5pZ6CS+r1Vna1q5ePQ0OoOoILq442WgDrJg==",
                             PhoneNumberConfirmed = false,
+                            RegisteredDate = new DateTime(2022, 6, 28, 9, 20, 42, 753, DateTimeKind.Local).AddTicks(5629),
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
                             UserName = "customer1"
@@ -175,15 +181,16 @@ namespace Economic.Data.Migrations
                             Id = new Guid("bff91054-dc92-421e-a233-d1080f630928"),
                             AccessFailedCount = 0,
                             Address = "TP HCM",
-                            ConcurrencyStamp = "ce65c1c0-8e8f-47df-9783-610cea761fd2",
+                            ConcurrencyStamp = "cd61fb9e-7070-4ef6-9b8c-2dd3807d764c",
                             Email = "customer2@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             Name = "David",
                             NormalizedEmail = "customer2@gmail.com",
                             NormalizedUserName = "customer",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIVChlYlYVZvu9wMBWYwH5d+4TUcNZjZ3b1elhXu48K3GpGXLR6P5LUnyOC5wbRhfg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMczglLuZYhKCyGAHYsCdX/rTIo2pNLDIrY/CYxIsiXnDwG3lqq5bs2v7ueWdafIbw==",
                             PhoneNumberConfirmed = false,
+                            RegisteredDate = new DateTime(2022, 6, 28, 9, 20, 42, 755, DateTimeKind.Local).AddTicks(2289),
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
                             UserName = "customer2"
@@ -247,7 +254,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 1,
                             Content = "Nồi tạm ổn",
-                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1522),
+                            Created = new DateTime(2022, 6, 28, 9, 20, 42, 755, DateTimeKind.Local).AddTicks(2320),
                             ProductId = 1,
                             Star = 5,
                             UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
@@ -256,7 +263,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 2,
                             Content = "Sản phẩm tốt",
-                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1536),
+                            Created = new DateTime(2022, 6, 28, 9, 20, 42, 755, DateTimeKind.Local).AddTicks(2322),
                             ProductId = 1,
                             Star = 4,
                             UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")
@@ -265,7 +272,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 3,
                             Content = "Chất lượng ổn",
-                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1537),
+                            Created = new DateTime(2022, 6, 28, 9, 20, 42, 755, DateTimeKind.Local).AddTicks(2323),
                             ProductId = 2,
                             Star = 3,
                             UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
@@ -274,7 +281,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 4,
                             Content = "Tạm ổn",
-                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1539),
+                            Created = new DateTime(2022, 6, 28, 9, 20, 42, 755, DateTimeKind.Local).AddTicks(2325),
                             ProductId = 2,
                             Star = 2,
                             UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")
@@ -283,7 +290,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 5,
                             Content = "Nồi tạm ổn",
-                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1540),
+                            Created = new DateTime(2022, 6, 28, 9, 20, 42, 755, DateTimeKind.Local).AddTicks(2326),
                             ProductId = 3,
                             Star = 1,
                             UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
@@ -292,7 +299,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 6,
                             Content = "Tốt lắm",
-                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1541),
+                            Created = new DateTime(2022, 6, 28, 9, 20, 42, 755, DateTimeKind.Local).AddTicks(2328),
                             ProductId = 7,
                             Star = 5,
                             UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")
@@ -301,7 +308,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 7,
                             Content = "Tàm tạm",
-                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1543),
+                            Created = new DateTime(2022, 6, 28, 9, 20, 42, 755, DateTimeKind.Local).AddTicks(2329),
                             ProductId = 7,
                             Star = 3,
                             UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
@@ -310,7 +317,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 8,
                             Content = "Ổn áp",
-                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1544),
+                            Created = new DateTime(2022, 6, 28, 9, 20, 42, 755, DateTimeKind.Local).AddTicks(2331),
                             ProductId = 8,
                             Star = 4,
                             UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")
@@ -319,7 +326,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 9,
                             Content = "Tốt",
-                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1546),
+                            Created = new DateTime(2022, 6, 28, 9, 20, 42, 755, DateTimeKind.Local).AddTicks(2332),
                             ProductId = 9,
                             Star = 2,
                             UserId = new Guid("bff91064-dc92-421e-a233-d1080f630928")
@@ -328,7 +335,7 @@ namespace Economic.Data.Migrations
                         {
                             Id = 10,
                             Content = "Sản phẩm ổn",
-                            Created = new DateTime(2022, 6, 27, 23, 43, 21, 208, DateTimeKind.Local).AddTicks(1547),
+                            Created = new DateTime(2022, 6, 28, 9, 20, 42, 755, DateTimeKind.Local).AddTicks(2333),
                             ProductId = 10,
                             Star = 3,
                             UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")
@@ -498,6 +505,9 @@ namespace Economic.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -513,6 +523,9 @@ namespace Economic.Data.Migrations
                     b.Property<int>("ProductTypeId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ProductTypeId");
@@ -523,130 +536,162 @@ namespace Economic.Data.Migrations
                         new
                         {
                             Id = 1,
+                            CreatedDate = new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2190),
                             Description = "Nồi cơm nắp gài thiết kế đẹp mắt đáp ứng nhu cầu nấu cơm cơ bản; Nấu cơm chín nhanh chóng qua công nghệ nấu 1D, công suất 500W",
                             Name = "Nồi cơm nắp gài Kangaroo 1.5 lít KG825",
                             Price = 950000m,
-                            ProductTypeId = 1
+                            ProductTypeId = 1,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
+                            CreatedDate = new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2202),
                             Description = "Nấu cơm thơm ngon, chín đều nhờ công nghệ nấu gia nhiệt tuần hoàn; Gia nhiệt đều, nấu cơm nhanh, giữ ấm lâu với công suất 860W cùng lòng nồi dạng niêu",
                             Name = "Nồi cơm điện tử Joyoung 1.8 lít F-50FY13",
                             Price = 1790000m,
-                            ProductTypeId = 1
+                            ProductTypeId = 1,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3,
+                            CreatedDate = new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2203),
                             Description = "Nồi cơm nắp gài nhỏ gọn, đẹp mắt phù hợp cho nhu cầu nấu cơm cơ bản; Nấu cơm chín đều, tơi xốp, thơm ngon nhớ công nghệ nấu 1D, công suất 900W",
                             Name = "Nồi cơm nắp gài Kangaroo 2.2 lít KG829",
                             Price = 1150000m,
-                            ProductTypeId = 1
+                            ProductTypeId = 1,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 4,
+                            CreatedDate = new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2205),
                             Description = "Nồi cơm nắp gài nhỏ gọn, đẹp mắt sử dụng cho nhu cầu nấu cơm cơ bản; Nấu cơm chín đều, tơi xốp, thơm ngon nhờ công nghệ nấu 3D",
                             Name = "Nồi cơm nắp gài Kangaroo 1.2 lít KG822",
                             Price = 900000m,
-                            ProductTypeId = 1
+                            ProductTypeId = 1,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 5,
+                            CreatedDate = new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2206),
                             Description = "Nồi cơm nắp gài thiết kế đẹp mắt đáp ứng nhu cầu nấu cơm cơ bản; Nấu cơm chín nhanh đều, tơi xốp, thơm ngon nhờ công nghệ nấu 3D",
                             Name = "Nồi cơm nắp gài Delites 1.8 lít NCG1010",
                             Price = 790000m,
-                            ProductTypeId = 1
+                            ProductTypeId = 1,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 6,
+                            CreatedDate = new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2207),
                             Description = "Nồi cơm nắp gài thiết kế nổi bật phù hợp cho nhu cầu nấu cơm cơ bản; Cơm nấu nhín ngon, nhanh chóng qua công nghệ nấu 1D, công suất 700W",
                             Name = "Nồi cơm nắp gài Kangaroo 2.2 lít KG572",
                             Price = 890000m,
-                            ProductTypeId = 1
+                            ProductTypeId = 1,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 7,
+                            CreatedDate = new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2208),
                             Description = "Thiết kế đơn giản, màu sắc trẻ trung; Công nghệ nấu 1D, công suất 700W truyền nhiệt từ đáy nồi, cơm chín nhanh",
                             Name = "Nồi cơm nắp gài Ava 1.8 lít NCG1806",
                             Price = 720000m,
-                            ProductTypeId = 1
+                            ProductTypeId = 1,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 8,
+                            CreatedDate = new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2209),
                             Description = "Thiết kế màu cam tơi tắn, nhỏ gọn; Công nghệ nấu 1D nấu chín từ 20 - 30 phút",
                             Name = "Nồi cơm điện Midea 0.6 lít MR-CM06SD",
                             Price = 590000m,
-                            ProductTypeId = 1
+                            ProductTypeId = 1,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 9,
+                            CreatedDate = new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2210),
                             Description = "Đáp ứng nhu cầu pha cà phê, nấu mì… với dung tích 1.5 lít; Nấu nước sôi nhanh 5- 7  phút với công suất 1500W",
                             Name = "Bình đun siêu tốc Delites 1.5 lít ST15S01",
                             Price = 170000m,
-                            ProductTypeId = 2
+                            ProductTypeId = 2,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 10,
+                            CreatedDate = new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2210),
                             Description = "Nấu cơm thơm ngon, chín đều nhờ công nghệ nấu gia nhiệt tuần hoàn; Gia nhiệt đều, nấu cơm nhanh, giữ ấm lâu với công suất 860W cùng lòng nồi dạng niêu",
                             Name = "Nồi cơm điện tử Joyoung 1.8 lít F-50FY13",
                             Price = 1790000m,
-                            ProductTypeId = 2
+                            ProductTypeId = 2,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 11,
+                            CreatedDate = new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2211),
                             Description = "Nồi cơm nắp gài nhỏ gọn, đẹp mắt phù hợp cho nhu cầu nấu cơm cơ bản; Nấu cơm chín đều, tơi xốp, thơm ngon nhớ công nghệ nấu 1D, công suất 900W",
                             Name = "Nồi cơm nắp gài Kangaroo 2.2 lít KG829",
                             Price = 1150000m,
-                            ProductTypeId = 2
+                            ProductTypeId = 2,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 12,
+                            CreatedDate = new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2212),
                             Description = "Nồi cơm nắp gài nhỏ gọn, đẹp mắt sử dụng cho nhu cầu nấu cơm cơ bản; Nấu cơm chín đều, tơi xốp, thơm ngon nhờ công nghệ nấu 3D",
                             Name = "Nồi cơm nắp gài Kangaroo 1.2 lít KG822",
                             Price = 900000m,
-                            ProductTypeId = 2
+                            ProductTypeId = 2,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 13,
+                            CreatedDate = new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2213),
                             Description = "Nồi cơm nắp gài thiết kế đẹp mắt đáp ứng nhu cầu nấu cơm cơ bản; Nấu cơm chín nhanh đều, tơi xốp, thơm ngon nhờ công nghệ nấu 3D",
                             Name = "Nồi cơm nắp gài Delites 1.8 lít NCG1010",
                             Price = 790000m,
-                            ProductTypeId = 2
+                            ProductTypeId = 2,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 14,
+                            CreatedDate = new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2214),
                             Description = "Nồi cơm nắp gài thiết kế nổi bật phù hợp cho nhu cầu nấu cơm cơ bản; Cơm nấu nhín ngon, nhanh chóng qua công nghệ nấu 1D, công suất 700W",
                             Name = "Nồi cơm nắp gài Kangaroo 2.2 lít KG572",
                             Price = 890000m,
-                            ProductTypeId = 2
+                            ProductTypeId = 2,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 15,
+                            CreatedDate = new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2217),
                             Description = "Thiết kế đơn giản, màu sắc trẻ trung; Công nghệ nấu 1D, công suất 700W truyền nhiệt từ đáy nồi, cơm chín nhanh",
                             Name = "Nồi cơm nắp gài Ava 1.8 lít NCG1806",
                             Price = 720000m,
-                            ProductTypeId = 2
+                            ProductTypeId = 2,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 16,
+                            CreatedDate = new DateTime(2022, 6, 28, 9, 20, 42, 750, DateTimeKind.Local).AddTicks(2218),
                             Description = "Thiết kế màu cam tơi tắn, nhỏ gọn; Công nghệ nấu 1D nấu chín từ 20 - 30 phút",
                             Name = "Nồi cơm điện Midea 0.6 lít MR-CM06SD",
                             Price = 590000m,
-                            ProductTypeId = 2
+                            ProductTypeId = 2,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 

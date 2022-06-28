@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Economic.Data.Migrations
 {
     [DbContext(typeof(EconomicDbContext))]
-    [Migration("20220627163540_AddProductType")]
-    partial class AddProductType
+    [Migration("20220628021929_UpdateDatabase")]
+    partial class UpdateDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -239,7 +239,6 @@ namespace Economic.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime?>("CreatedDate")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
@@ -307,56 +306,6 @@ namespace Economic.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProductTypes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Mang đến những bửa cơm đầy dinh dưỡng cho gia đình bạn",
-                            Name = "Nồi cơm điện"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "Giải pháp hiệu quả cho người bận rộn",
-                            Name = "Ấm đun siêu tốc"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "Lựa chọn tốt nhất hàng đàu mang lại vitamin trái cây",
-                            Name = "Máy xay sinh tố"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Description = "Chắc lọc sự tinh túy từ thiện nhiên trong ly nước ép",
-                            Name = "Máy ép trái cây"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Description = "Cắt giảm lượng dầu mỡ tối đa cho gia đình bạn",
-                            Name = "Nồi chiên không dầu"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Description = "Sự lựa chọn tối ưu cho bửa xum họp gia đình",
-                            Name = "Lẩu điện"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Description = "Những buổi tiệc nướng đầy ấm áp bên người thân được mang lại",
-                            Name = "Bếp nướng"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Description = "Căn bếp đầy tiện nghi và sang trọng khi có mặt sản phẩm này",
-                            Name = "Bếp hồng ngoại"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
