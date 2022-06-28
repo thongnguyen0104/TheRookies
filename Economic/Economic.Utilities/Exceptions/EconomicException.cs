@@ -12,7 +12,7 @@ namespace Economic.Utilities.Exceptions
         {
 
         }
-        public EconomicException(string message)
+        public EconomicException(string message) : base(message)
         {
 
         }

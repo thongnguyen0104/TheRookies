@@ -1,36 +1,87 @@
-﻿using Economic.Data.EF;
+﻿using Economic.Application.Interface;
+using Economic.Data.EF;
 using Economic.Data.Entities;
+using Economic.Utilities.Exceptions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Economic.Api.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
     public class ProductsController : ControllerBase
     {
         private readonly EconomicDbContext _context;
-        public ProductsController(EconomicDbContext context)
+        private readonly IProductService _productService;
+        public ProductsController(EconomicDbContext context, IProductService productService)
         {
             _context = context;
+            _productService = productService;
         }
         [HttpGet]
-        public IActionResult Get()
+        [AllowAnonymous]
+        public async Task<IActionResult> Get()
         {
-            var products = _context.Products.ToList();
+            var products = await _productService.GetAllAsync();
             return Ok(products);
         }
-        [HttpGet("{id}")]
-        public IActionResult GetById([FromRoute] int id)
+
+        [HttpGet("Id")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetById(int id)
         {
-            var product = _context.Products.FirstOrDefault(product => product.Id == id);
-            return Ok(product);
+            try
+            {
+                var product = await _productService.GetByIdAsync(id);
+                if(product == null)
+                {
+                    return NotFound($"Cannot find a product with Id: {id}");
+                }
+                return Ok(product);
+            } 
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
-        [HttpPost]
-        public async Task<IActionResult> Post([FromBody]Product product)
+
+        [HttpGet("KeyWord")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetByKeyword(string Key)
         {
-            _context.Products.Add(product);
-            await _context.SaveChangesAsync();
-            return Ok(product);
+            try
+            {
+                var product = await _productService.GetByKeywordAsync(Key);
+                if (product == null)
+                {
+                    return NotFound($"Cannot find a product with keyWord: {Key}");
+                }
+                return Ok(product);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpDelete("Id")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                var product = await _productService.DeleteAsync(id);
+                if (product == null)
+                {
+                    return NotFound($"Cannot Delete a product with Id: {id}");
+                }
+                return Ok(product);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }
