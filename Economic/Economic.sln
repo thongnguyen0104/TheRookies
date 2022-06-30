@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Economic.Application", "Eco
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Economic.Utilities", "Economic.Utilities\Economic.Utilities.csproj", "{1878CAC3-B038-4147-9E68-F9C118F86D18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Economic.ViewModels", "Economic.ViewModels\Economic.ViewModels.csproj", "{9B821CDA-AC91-48F9-9256-D3331C73F0DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Economic.ViewModels", "Economic.ViewModels\Economic.ViewModels.csproj", "{9B821CDA-AC91-48F9-9256-D3331C73F0DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Economic.CustomersSite", "Economic.CustomersSite\Economic.CustomersSite.csproj", "{661F10FA-6603-46AF-AA6F-709CBAB380D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{9B821CDA-AC91-48F9-9256-D3331C73F0DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B821CDA-AC91-48F9-9256-D3331C73F0DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B821CDA-AC91-48F9-9256-D3331C73F0DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{661F10FA-6603-46AF-AA6F-709CBAB380D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{661F10FA-6603-46AF-AA6F-709CBAB380D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{661F10FA-6603-46AF-AA6F-709CBAB380D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{661F10FA-6603-46AF-AA6F-709CBAB380D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,7 @@
-﻿using Economic.CustomersSite.Models;
+﻿using Economic.CustomersSite.Integration;
+using Economic.CustomersSite.Models;
 using Microsoft.AspNetCore.Mvc;
+using Refit;
 using System.Diagnostics;
 
 namespace Economic.CustomersSite.Controllers
@@ -7,15 +9,21 @@ namespace Economic.CustomersSite.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private IProductApi _productApi;
+        private HomeViewModels _homeViewModels;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            _productApi = RestService.For<IProductApi>("https://localhost:7246");
+            _homeViewModels = new HomeViewModels();
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var products = _productApi.GetAllAsync().GetAwaiter().GetResult();
+            _homeViewModels.Products = products;
+            return View(_homeViewModels);
         }
 
         public IActionResult Privacy()
