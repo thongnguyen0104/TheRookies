@@ -2,6 +2,7 @@
 using Economic.Data.EF;
 using Economic.Data.Entities;
 using Economic.Utilities.Exceptions;
+using Economic.ViewModels.Request.Product;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -46,6 +47,25 @@ namespace Economic.Api.Controllers
             }
         }
 
+        [HttpGet("productTypeId")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetByIdProductType(int id)
+        {
+            try
+            {
+                var products = await _productService.GetByIdProductTypeAsync(id);
+                if (products == null)
+                {
+                    return NotFound($"Cannot find a product with Id: {id}");
+                }
+                return Ok(products);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
         [HttpGet("KeyWord")]
         [AllowAnonymous]
         public async Task<IActionResult> GetByKeyword(string Key)
@@ -72,13 +92,55 @@ namespace Economic.Api.Controllers
             try
             {
                 var product = await _productService.DeleteAsync(id);
-                if (product == null)
+                if (product > 0)
                 {
-                    return NotFound($"Cannot Delete a product with Id: {id}");
+                    return Ok(product);
+                    
                 }
-                return Ok(product);
+                return NotFound($"Cannot Delete a product with Id: {id}");
             }
             catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+
+        public async Task<IActionResult> Create([FromBody]ProductCreateRequest request)
+        {
+            var productId = await _productService.CreateAsync(request);
+            if(productId == null)
+            {
+                return BadRequest();
+            }
+            var result = await _productService.GetByIdAsync(productId);
+            if(result == null)
+            {
+                return NotFound($"Cannot find a product with Id: {productId}");
+            }
+            return Ok(result);
+        }
+
+        [HttpPut]
+        [AllowAnonymous]
+        public async Task<IActionResult> Update([FromBody] ProductUpdateRequest request)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                var result = await _productService.UpdateAsync(request);
+                if(result == 0)
+                {
+                    return BadRequest();
+                }
+                return Ok(result);
+            }
+            catch(Exception e)
             {
                 return BadRequest(e.Message);
             }

@@ -1,9 +1,11 @@
 using Economic.Application.Interface;
 using Economic.Application.Services;
 using Economic.Data.EF;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Configuration;
+using Microsoft.AspNetCore.Identity;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -39,11 +41,13 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 //add automapper
-//builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+//builder.services.addautomapper(appdomain.currentdomain.getassemblies());
 //builder.Services.AddAutoMapper(typeof(Program).Assembly);
-//Declare DI
 
+//Declare DI
 builder.Services.AddTransient<IProductService, ProductService>();
+builder.Services.AddTransient<IProductImageService, ProductImageService>();
+builder.Services.AddTransient<IProductTypeService, ProductTypeService>();
 
 var app = builder.Build();
 
