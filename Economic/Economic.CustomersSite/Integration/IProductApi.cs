@@ -1,7 +1,7 @@
 ﻿using Economic.ViewModels.ViewModels;
 using Refit;
 
-namespace Economic.CustomersSite.Integration
+namespace Economic.CustomersSiteMVC.Integration
 {
     public interface IProductApi
     {

@@ -1,10 +1,10 @@
-﻿using Economic.CustomersSite.Integration;
-using Economic.CustomersSite.Models;
+﻿using Economic.CustomersSiteMVC.Integration;
+using Economic.CustomersSiteMVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using Refit;
 using System.Diagnostics;
 
-namespace Economic.CustomersSite.Controllers
+namespace Economic.CustomersSiteMVC.Controllers
 {
     public class HomeController : Controller
     {

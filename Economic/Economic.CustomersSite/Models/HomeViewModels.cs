@@ -1,6 +1,6 @@
 ﻿using Economic.ViewModels.ViewModels;
 
-namespace Economic.CustomersSite.Models
+namespace Economic.CustomersSiteMVC.Models
 {
     public class HomeViewModels
     {

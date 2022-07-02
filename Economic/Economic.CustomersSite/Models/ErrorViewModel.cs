@@ -1,4 +1,4 @@
-namespace Economic.CustomersSite.Models
+namespace Economic.CustomersSiteMVC.Models
 {
     public class ErrorViewModel
     {

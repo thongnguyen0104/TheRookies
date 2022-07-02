@@ -46,7 +46,9 @@ builder.Services.AddSwaggerGen(c =>
 
 //Declare DI
 builder.Services.AddTransient<IProductService, ProductService>();
+
 builder.Services.AddTransient<IProductImageService, ProductImageService>();
+
 builder.Services.AddTransient<IProductTypeService, ProductTypeService>();
 
 var app = builder.Build();

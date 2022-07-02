@@ -8,7 +8,7 @@ using Economic.Data.Entities;
 using Economic.Data.Configurations;
 using Economic.Data.Extensions;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity;                         
 
 namespace Economic.Data.EF
 {

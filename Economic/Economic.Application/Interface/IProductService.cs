@@ -16,5 +16,6 @@ namespace Economic.Application.Interface
         Task<ProductViewModel> GetByIdAsync(int productId);
         Task<List<ProductViewModel>> GetAllAsync();
         Task<List<ProductViewModel>> GetByKeywordAsync(string keyWord);
+        Task<List<ProductViewModel>> GetByIdProductTypeAsync(int productTypeId);
     }
 }

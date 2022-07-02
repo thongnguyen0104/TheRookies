@@ -8,8 +8,8 @@ namespace Economic.ViewModels.ViewModels
 {
     public class ProductImageViewModel
     {
-        private string _url;
-        public int id { get; set; }
+        private string? _url;
+        public int Id { get; set; }
         public int ProductId { get; set; }
         public string ProductPath
         {
