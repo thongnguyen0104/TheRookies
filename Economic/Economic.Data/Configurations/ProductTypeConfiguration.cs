@@ -15,6 +15,7 @@ namespace Economic.Data.Configurations
         {
             builder.Property(x => x.Description).IsRequired(false);
             builder.Property(x => x.Name).IsRequired();
+            builder.Property(x => x.IsDeleted).IsRequired().HasDefaultValue(0);
         }
     }
 }

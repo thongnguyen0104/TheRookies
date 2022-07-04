@@ -14,6 +14,7 @@ namespace Economic.Data.Entities
         public string Description { get; set; }
         public DateTime CreatedDate { get; set;}
         public DateTime UpdatedDate { get; set;}
+        public int IsDeleted { get; set; }
         public int ProductTypeId { get; set; }
         public ProductType ProductType { get; set; }
         public List<ProductImage> ProductImages { get; set; }

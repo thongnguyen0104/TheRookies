@@ -16,9 +16,8 @@ namespace Economic.Data.Configurations
             builder.Property(x => x.Name).IsRequired().HasMaxLength(60);
             builder.Property(x => x.Price).IsRequired().HasColumnType("decimal(10, 2)");
             builder.Property(x => x.Description).IsRequired();
-            //builder.Property(x => x.CreatedDate).IsRequired(true);
-            //builder.Property(x => x.UpdatedDate).IsRequired();
-
+            builder.Property(x => x.CreatedDate).IsRequired(true);
+            builder.Property(x => x.IsDeleted).IsRequired().HasDefaultValue(0);
         }
     }
 }

@@ -14,14 +14,14 @@ namespace Economic.Data.Extensions
         public static void Seed(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ProductType>().HasData(
-                new ProductType { Id = 1, Name = "Nồi cơm điện", Description = "Mang đến những bửa cơm đầy dinh dưỡng cho gia đình bạn" },
-                new ProductType { Id = 2, Name = "Ấm đun siêu tốc", Description = "Giải pháp hiệu quả cho người bận rộn" },
-                new ProductType { Id = 3, Name = "Máy xay sinh tố", Description = "Lựa chọn tốt nhất hàng đàu mang lại vitamin trái cây" },
-                new ProductType { Id = 4, Name = "Máy ép trái cây", Description = "Chắc lọc sự tinh túy từ thiện nhiên trong ly nước ép" },
-                new ProductType { Id = 5, Name = "Nồi chiên không dầu", Description = "Cắt giảm lượng dầu mỡ tối đa cho gia đình bạn" },
-                new ProductType { Id = 6, Name = "Lẩu điện", Description = "Sự lựa chọn tối ưu cho bửa xum họp gia đình" },
-                new ProductType { Id = 7, Name = "Bếp nướng", Description = "Những buổi tiệc nướng đầy ấm áp bên người thân được mang lại" },
-                new ProductType { Id = 8, Name = "Bếp hồng ngoại", Description = "Căn bếp đầy tiện nghi và sang trọng khi có mặt sản phẩm này" }
+                new ProductType { Id = 1, Name = "Nồi cơm điện", Description = "Mang đến những bửa cơm đầy dinh dưỡng cho gia đình bạn", IsDeleted = 0 },
+                new ProductType { Id = 2, Name = "Ấm đun siêu tốc", Description = "Giải pháp hiệu quả cho người bận rộn", IsDeleted = 0 },
+                new ProductType { Id = 3, Name = "Máy xay sinh tố", Description = "Lựa chọn tốt nhất hàng đàu mang lại vitamin trái cây", IsDeleted = 0 },
+                new ProductType { Id = 4, Name = "Máy ép trái cây", Description = "Chắc lọc sự tinh túy từ thiện nhiên trong ly nước ép", IsDeleted = 0 },
+                new ProductType { Id = 5, Name = "Nồi chiên không dầu", Description = "Cắt giảm lượng dầu mỡ tối đa cho gia đình bạn", IsDeleted = 0 },
+                new ProductType { Id = 6, Name = "Lẩu điện", Description = "Sự lựa chọn tối ưu cho bửa xum họp gia đình", IsDeleted = 0 },
+                new ProductType { Id = 7, Name = "Bếp nướng", Description = "Những buổi tiệc nướng đầy ấm áp bên người thân được mang lại", IsDeleted = 0 },
+                new ProductType { Id = 8, Name = "Bếp hồng ngoại", Description = "Căn bếp đầy tiện nghi và sang trọng khi có mặt sản phẩm này", IsDeleted = 0 }
                 );
 
             modelBuilder.Entity<Product>().HasData(
@@ -32,7 +32,8 @@ namespace Economic.Data.Extensions
                     Price = 950000,
                     Description = "Nồi cơm nắp gài thiết kế đẹp mắt đáp ứng nhu cầu nấu cơm cơ bản; Nấu cơm chín nhanh chóng qua công nghệ nấu 1D, công suất 500W",
                     ProductTypeId = 1,
-                    CreatedDate = DateTime.Now
+                    CreatedDate = DateTime.Now,
+                    IsDeleted = 0
                 },
                 new Product()
                 {
@@ -41,7 +42,8 @@ namespace Economic.Data.Extensions
                     Price = 1790000,
                     Description = "Nấu cơm thơm ngon, chín đều nhờ công nghệ nấu gia nhiệt tuần hoàn; Gia nhiệt đều, nấu cơm nhanh, giữ ấm lâu với công suất 860W cùng lòng nồi dạng niêu",
                     ProductTypeId = 1,
-                    CreatedDate = DateTime.Now
+                    CreatedDate = DateTime.Now,
+                    IsDeleted = 0
                 },
                 new Product()
                 {
@@ -50,7 +52,8 @@ namespace Economic.Data.Extensions
                     Price = 1150000,
                     Description = "Nồi cơm nắp gài nhỏ gọn, đẹp mắt phù hợp cho nhu cầu nấu cơm cơ bản; Nấu cơm chín đều, tơi xốp, thơm ngon nhớ công nghệ nấu 1D, công suất 900W",
                     ProductTypeId = 1,
-                    CreatedDate = DateTime.Now
+                    CreatedDate = DateTime.Now,
+                    IsDeleted = 0
                 },
                 new Product()
                 {
@@ -59,7 +62,8 @@ namespace Economic.Data.Extensions
                     Price = 900000,
                     Description = "Nồi cơm nắp gài nhỏ gọn, đẹp mắt sử dụng cho nhu cầu nấu cơm cơ bản; Nấu cơm chín đều, tơi xốp, thơm ngon nhờ công nghệ nấu 3D",
                     ProductTypeId = 1,
-                    CreatedDate = DateTime.Now
+                    CreatedDate = DateTime.Now,
+                    IsDeleted = 0
                 },
                 new Product()
                 {
@@ -68,7 +72,8 @@ namespace Economic.Data.Extensions
                     Price = 790000,
                     Description = "Nồi cơm nắp gài thiết kế đẹp mắt đáp ứng nhu cầu nấu cơm cơ bản; Nấu cơm chín nhanh đều, tơi xốp, thơm ngon nhờ công nghệ nấu 3D",
                     ProductTypeId = 1,
-                    CreatedDate = DateTime.Now
+                    CreatedDate = DateTime.Now,
+                    IsDeleted = 0
                 },
                 new Product()
                 {
@@ -77,7 +82,8 @@ namespace Economic.Data.Extensions
                     Price = 890000,
                     Description = "Nồi cơm nắp gài thiết kế nổi bật phù hợp cho nhu cầu nấu cơm cơ bản; Cơm nấu nhín ngon, nhanh chóng qua công nghệ nấu 1D, công suất 700W",
                     ProductTypeId = 1,
-                    CreatedDate = DateTime.Now
+                    CreatedDate = DateTime.Now,
+                    IsDeleted = 0
                 },
                 new Product()
                 {
@@ -86,7 +92,8 @@ namespace Economic.Data.Extensions
                     Price = 720000,
                     Description = "Thiết kế đơn giản, màu sắc trẻ trung; Công nghệ nấu 1D, công suất 700W truyền nhiệt từ đáy nồi, cơm chín nhanh",
                     ProductTypeId = 1,
-                    CreatedDate = DateTime.Now
+                    CreatedDate = DateTime.Now,
+                    IsDeleted = 0
                 },
                 new Product()
                 {
@@ -95,7 +102,8 @@ namespace Economic.Data.Extensions
                     Price = 590000,
                     Description = "Thiết kế màu cam tơi tắn, nhỏ gọn; Công nghệ nấu 1D nấu chín từ 20 - 30 phút",
                     ProductTypeId = 1,
-                    CreatedDate = DateTime.Now
+                    CreatedDate = DateTime.Now,
+                    IsDeleted = 0
                 },
                 new Product()
                 {
@@ -104,7 +112,8 @@ namespace Economic.Data.Extensions
                     Price = 170000,
                     Description = "Đáp ứng nhu cầu pha cà phê, nấu mì… với dung tích 1.5 lít; Nấu nước sôi nhanh 5- 7  phút với công suất 1500W",
                     ProductTypeId = 2,
-                    CreatedDate = DateTime.Now
+                    CreatedDate = DateTime.Now,
+                    IsDeleted = 0
                 },
                 new Product()
                 {
@@ -113,7 +122,8 @@ namespace Economic.Data.Extensions
                     Price = 1790000,
                     Description = "Đáp ứng nhu cầu pha cà phê, nấu mì… với dung tích 1.8 lít; Nấu nước sôi nhanh 7 - 8 phút với công suất 1800W",
                     ProductTypeId = 2,
-                    CreatedDate = DateTime.Now
+                    CreatedDate = DateTime.Now,
+                    IsDeleted = 0
                 },
                 new Product()
                 {
@@ -122,7 +132,8 @@ namespace Economic.Data.Extensions
                     Price = 1150000,
                     Description = "Đáp ứng nhu cầu pha cà phê, nấu mì… với dung tích 1.7 lít; Nấu nước sôi nhanh 4 - 6 phút với công suất 2200W",
                     ProductTypeId = 2,
-                    CreatedDate = DateTime.Now
+                    CreatedDate = DateTime.Now,
+                    IsDeleted = 0
                 },
                 new Product()
                 {
@@ -131,7 +142,8 @@ namespace Economic.Data.Extensions
                     Price = 900000,
                     Description = "Dung tích 1.7 lít, tay cầm to bản dễ dàng cầm nắm; Mâm nhiệt từ inox bền bỉ truyền nhiệt tốt, an toàn",
                     ProductTypeId = 2,
-                    CreatedDate = DateTime.Now
+                    CreatedDate = DateTime.Now,
+                    IsDeleted = 0
                 },
                 new Product()
                 {
@@ -140,7 +152,8 @@ namespace Economic.Data.Extensions
                     Price = 790000,
                     Description = "Dung tích 1.7 lít, thang đo mực nước tiện châm nước khi đun; Chất liệu nhựa PP an toàn sức khỏe, đế tiếp tiện xoay 360 độ lấy nước dễ dàng",
                     ProductTypeId = 2,
-                    CreatedDate = DateTime.Now
+                    CreatedDate = DateTime.Now,
+                    IsDeleted = 0
                 },
                 new Product()
                 {
@@ -149,7 +162,8 @@ namespace Economic.Data.Extensions
                     Price = 890000,
                     Description = "Đáp ứng nhu cầu pha cà phê, nấu mì… với dung tích 1.8 lít; Nấu nước sôi nhanh 5 - 7 phút với công suất 2200W",
                     ProductTypeId = 2,
-                    CreatedDate = DateTime.Now
+                    CreatedDate = DateTime.Now,
+                    IsDeleted = 0
                 },
                 new Product()
                 {
@@ -158,7 +172,8 @@ namespace Economic.Data.Extensions
                     Price = 720000,
                     Description = "Đáp ứng nhu cầu pha cà phê, nấu mì… với dung tích 1.5 lít; Nấu nước sôi nhanh 5 - 7 phút với công suất 1800W",
                     ProductTypeId = 2,
-                    CreatedDate = DateTime.Now
+                    CreatedDate = DateTime.Now,
+                    IsDeleted = 0
                 },
                 new Product()
                 {
@@ -167,7 +182,8 @@ namespace Economic.Data.Extensions
                     Price = 590000,
                     Description = "Đáp ứng nhu cầu pha cà phê, nấu mì… với dung tích 1.0 lít; Nấu nước sôi nhanh 4 - 6 phút với công suất 2200W",
                     ProductTypeId = 2,
-                    CreatedDate = DateTime.Now
+                    CreatedDate = DateTime.Now,
+                    IsDeleted = 0
                 });
 
             modelBuilder.Entity<ProductImage>().HasData(

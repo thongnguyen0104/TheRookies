@@ -11,7 +11,7 @@ namespace Economic.Data.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-
+        public int IsDeleted { get; set; }
         public List<Product> Products { get; set; }
     }
 }
