@@ -1,16 +1,15 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Economic.RazorPage</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Economic.RazorPage.styles.css" asp-append-version="true" />
-    @*Local*@
-    <link rel="stylesheet" href="~/public/css/input.css">
-    <link rel="stylesheet" href="~/public/css/style.css">
-    <link rel="icon" href="~/public/img/camel-logo.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CamelStore | Ecommerce Website Desgin</title>
+    <link rel="stylesheet" href="/public/css/input.css">
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="/public/css/styleComment.css">
+    <link rel="icon" href="/public/img/camel-logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -51,7 +50,7 @@
                 </div>
 
                 <div class="navbar__input">
-                    <form action="/products/search" method="GET" style="width: 100%">
+                    <form asp-page="Search" method="get" style="width: 100%">
                         <input name="keyword" type="text" placeholder="Tìm kiếm">
                     </form>
                     <div class="navnar__input-search">
@@ -89,11 +88,7 @@
         </div>
     </div>
 
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    @RenderBody()
 
     @*footer*@
     <div class="footer">
@@ -163,5 +158,6 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>

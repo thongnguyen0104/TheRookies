@@ -25,6 +25,17 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.MapControllerRoute(
+    name: "default",
+    pattern: "/{action=Index}/{id?}");
+app.UseEndpoints(enpoints =>
+{
+    enpoints.MapRazorPages();
+    enpoints.MapControllerRoute(
+        name: "default",
+        pattern: "/{action=Index}/{id?}");
+});
+
 app.MapRazorPages();
 
 app.Run();
