@@ -1,10 +1,10 @@
 import API from "./API";
 import { END_POINT } from "./endPoint";
 
-const productApi = {
+const productTypeApi = {
     getAllAsync: async () => {
         try {
-            const result = await API.get(`${END_POINT.PRODUCTS}`);
+            const result = await API.get(`${END_POINT.PRODUCTTYPES}`);
             return result;
         } catch (error) {
             console.error(error);
@@ -12,7 +12,7 @@ const productApi = {
     },
     getByIdAsync: async (id) => {
         try {
-            const result = await API.get(`${END_POINT.PRODUCTS}/${id}`);
+            const result = await API.get(`${END_POINT.PRODUCTTYPES}/${id}`);
             return result;
         } catch (error) {
             console.error(error);
@@ -20,7 +20,7 @@ const productApi = {
     },
     addAsync: async (content) => {
         try {
-            const result = await API.post(`${END_POINT.PRODUCTS}`, content);
+            const result = await API.post(`${END_POINT.PRODUCTTYPES}`, content);
             return result;
         } catch (error) {
             console.error(error);
@@ -28,7 +28,7 @@ const productApi = {
     },
     deleteAsync: async (id) => {
         try {
-            const result = await API.delete(`${END_POINT.PRODUCTS}/${"delete"}/${id}`);
+            const result = await API.delete(`${END_POINT.PRODUCTTYPES}/${id}`);
             return result;
         } catch (error) {
             console.error(error);
@@ -36,7 +36,7 @@ const productApi = {
     },
     updateAsync: async (content) => {
         try {
-            const result = await API.put(`${END_POINT.PRODUCTS}`, content);
+            const result = await API.put(`${END_POINT.PRODUCTTYPES}`, content);
             return result;
         } catch (error) {
             console.log(error)
@@ -44,4 +44,4 @@ const productApi = {
     }
 }
 
-export default productApi;
+export default productTypeApi;
