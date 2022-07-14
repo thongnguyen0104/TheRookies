@@ -34,6 +34,7 @@ function CreateProuctType() {
             <div style={{ padding: '0px 0px 0px 370px' }}>
                 <Sidebar />
             </div>
+            <div style={{ padding: '50px 50px 0px 0px' }}>
             <Container>
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <Row className="mb-3">
@@ -61,6 +62,7 @@ function CreateProuctType() {
                     <Button type="submit">Submit form</Button>
                 </Form>
             </Container>
+            </div>
         </>
     );
 }

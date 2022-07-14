@@ -3,7 +3,6 @@ import productTypeApi from '../../api/productTypeApi';
 import { Link } from 'react-router-dom'
 
 import { Table, Navbar, Container, Nav, NavDropdown, Button } from 'react-bootstrap';
-// import { Button } from 'bootstrap';
 
 function ProductTypes() {
 
@@ -27,56 +26,58 @@ function ProductTypes() {
 
     return (
         <>
-            <Link to='/producttypes/create'>
-                <Button color='red'>Add</Button>
-            </Link>
-            <h1>PRODUCT TYPE</h1>
-            <Table striped bordered hover>
-                <thead >
-                    <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        {/* <th>Price</th> */}
-                        <th>Edit</th>
-                        <th>Update</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        productTypes.map((item, key) => (
-                            <tr key={key}>
-                                <td>{key + 1}</td>
-                                <td>{item.name}</td>
-                                <td>{item.description}</td>
-                                <td>
-                                    <Link
-                                        to={`/producttypes/${item.id}/edit`}
-                                    >
-                                        <Button
-                                            variant="warning"
+            <div style={{ padding: '20px 50px 0px 0px' }}>
+                <Link to='/producttypes/create'>
+                    <Button color='red'>Add</Button>
+                </Link>
+                <h1>PRODUCT TYPE</h1>
+                <Table striped bordered hover>
+                    <thead >
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            {/* <th>Price</th> */}
+                            <th>Edit</th>
+                            <th>Update</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            productTypes.map((item, key) => (
+                                <tr key={key}>
+                                    <td>{key + 1}</td>
+                                    <td>{item.name}</td>
+                                    <td>{item.description}</td>
+                                    <td>
+                                        <Link
+                                            to={`/producttypes/${item.id}/edit`}
                                         >
-                                            <i className='bx bx-edit'></i></Button>
-                                    </Link>
-                                </td>
-                                <td>
-                                    <Button
-                                        variant="danger"
-                                        onClick={() => {
-                                            let check = window.confirm("Ban co chac xoa?")
-                                            // alert(check)
-                                            if (check)
-                                                deleteProductType(item.id)
-                                        }
-                                        }
-                                    >
-                                        <i className='bx bx-x'></i></Button>
-                                </td>
-                            </tr>
-                        ))
-                    }
-                </tbody>
-            </Table>
+                                            <Button
+                                                variant="warning"
+                                            >
+                                                <i className='bx bx-edit'></i></Button>
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <Button
+                                            variant="danger"
+                                            onClick={() => {
+                                                let check = window.confirm("Ban co chac xoa?")
+                                                // alert(check)
+                                                if (check)
+                                                    deleteProductType(item.id)
+                                            }
+                                            }
+                                        >
+                                            <i className='bx bx-x'></i></Button>
+                                    </td>
+                                </tr>
+                            ))
+                        }
+                    </tbody>
+                </Table>
+            </div>
         </>
     )
 }

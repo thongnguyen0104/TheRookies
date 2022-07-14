@@ -31,7 +31,7 @@ const Products = () => {
 
     return (
         <>
-
+        <div style={{ padding: '20px 50px 0px 0px' }}>
             <Link to='/products/create'>
                 <Button color='red'>Add</Button>
             </Link>
@@ -45,6 +45,7 @@ const Products = () => {
                         <th>Price</th>
                         <th>Created Date</th>
                         <th>Updated Date</th>
+                        <th>Image</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -59,6 +60,7 @@ const Products = () => {
                                 <td>{item.price}</td>
                                 <td>{item.createdDate}</td>
                                 <td>{item.updatedDate}</td>
+                                <td>fguiw</td>
                                 <td>
                                     <Link
                                         to={`/products/${item.id}/edit`}
@@ -88,6 +90,7 @@ const Products = () => {
                     }
                 </tbody>
             </Table>
+            </div>
         </>
     )
 }

@@ -21,6 +21,7 @@ const Users = () => {
 
     return (
         <>
+        <div style={{ padding: '20px 50px 0px 0px' }}>
             {/* <Button className="mt-10">Add</Button> */}
             <h1>USERS</h1>
             <Table striped bordered hover>
@@ -47,6 +48,7 @@ const Users = () => {
                     }
                 </tbody>
             </Table>
+            </div>
         </>
     )
 }
