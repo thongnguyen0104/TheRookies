@@ -1,4 +1,7 @@
 ﻿using Economic.Application.Interface;
+using Economic.Data.EF;
+using Economic.Data.Entities;
+using Economic.ViewModels.Request.ProductImage;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -11,9 +14,11 @@ namespace Economic.Api.Controllers
     public class ImagesController : ControllerBase
     {
         private readonly IProductImageService _productImageService;
-        public ImagesController(IProductImageService productImageService)
+        private readonly IWebHostEnvironment _hostEnvironment;
+        public ImagesController(IProductImageService productImageService, IWebHostEnvironment hostEnvironment)
         {
             _productImageService = productImageService;
+            _hostEnvironment = hostEnvironment;
         }
 
         [HttpGet("productId")]
@@ -54,5 +59,33 @@ namespace Economic.Api.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> CreateAsync([FromForm] ProductImageCreateRequest request)
+        {
+            
+            request.ProductPath = await SaveImage(request.ImageFile);
+            var ImageSrc = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, request.ProductPath);
+            request.ProductPath = ImageSrc;
+
+            var productImg = await _productImageService.CreateAsync(request);
+
+            return StatusCode(201);
+        }
+
+        [NonAction]
+        public async Task<string> SaveImage(IFormFile imageFile)
+        {
+            string imageName = new String(Path.GetFileNameWithoutExtension(imageFile.FileName).Take(10).ToArray()).Replace(' ', '-');
+            imageName = imageName + DateTime.Now.ToString("yymmssfff") + Path.GetExtension(imageFile.FileName);
+            var imagePath = Path.Combine(_hostEnvironment.ContentRootPath, "wwwroot/Images", imageName);
+            using (var fileStream = new FileStream(imagePath, FileMode.Create))
+            {
+                await imageFile.CopyToAsync(fileStream);
+            }
+            return imageName;
+        }
+
     }
 }

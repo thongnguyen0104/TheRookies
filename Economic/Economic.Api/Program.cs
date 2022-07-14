@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Configuration;
 using Microsoft.AspNetCore.Identity;
-
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +30,7 @@ builder.Services.AddCors(options =>
                       });
 });
 
+
 builder.Services.AddDbContext<EconomicDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("EconomicDb")));
 
@@ -42,7 +43,7 @@ builder.Services.AddSwaggerGen(c =>
 
 //add automapper
 //builder.services.addautomapper(appdomain.currentdomain.getassemblies());
-//builder.Services.AddAutoMapper(typeof(Program).Assembly);
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 //Declare DI
 builder.Services.AddTransient<IProductService, ProductService>();
@@ -50,6 +51,12 @@ builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddTransient<IProductImageService, ProductImageService>();
 
 builder.Services.AddTransient<IProductTypeService, ProductTypeService>();
+
+builder.Services.AddTransient<ICommentService, CommentService>();
+
+builder.Services.AddTransient<IUserService, UserService>();
+
+
 
 var app = builder.Build();
 
@@ -69,9 +76,29 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
 app.UseCors("CORS");
+
 app.UseHttpsRedirection();
+
+//app.UseStaticFiles(new StaticFileOptions
+//{
+//    FileProvider = new PhysicalFileProvider(
+//           Path.Combine(builder.Environment.ContentRootPath, "Images")),
+//    RequestPath = "/Uploads"
+//});
+
+//var webRootProvider = new PhysicalFileProvider(builder.Environment.WebRootPath);
+//var newPathProvider = new PhysicalFileProvider(
+//  Path.Combine(builder.Environment.ContentRootPath, "Uploads"));
+
+//var compositeProvider = new CompositeFileProvider(webRootProvider,
+//                                                  newPathProvider);
+
+//// Update the default provider.
+//app.Environment.WebRootFileProvider = compositeProvider;
+
+app.UseStaticFiles();
+
 
 app.UseAuthorization();
 

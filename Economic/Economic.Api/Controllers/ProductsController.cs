@@ -1,10 +1,15 @@
-﻿using Economic.Application.Interface;
+﻿using AutoMapper;
+using Economic.Application.Interface;
 using Economic.Data.EF;
 using Economic.Data.Entities;
 using Economic.Utilities.Exceptions;
+using Economic.ViewModels.Request.Comment;
 using Economic.ViewModels.Request.Product;
+using Economic.ViewModels.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace Economic.Api.Controllers
 {
@@ -13,12 +18,14 @@ namespace Economic.Api.Controllers
     [Route("api/[controller]")]
     public class ProductsController : ControllerBase
     {
-        private readonly EconomicDbContext _context;
         private readonly IProductService _productService;
-        public ProductsController(EconomicDbContext context, IProductService productService)
+        private readonly ICommentService _commentService;
+        private readonly IMapper _mapper;
+        public ProductsController(IProductService productService, ICommentService commentService, IMapper mapper)
         {
-            _context = context;
             _productService = productService;
+            _commentService = commentService;
+            _mapper = mapper;
         }
         [HttpGet]
         [AllowAnonymous]
@@ -28,7 +35,7 @@ namespace Economic.Api.Controllers
             return Ok(products);
         }
 
-        [HttpGet("Id")]
+        [HttpGet("{id}")]
         [AllowAnonymous]
         public async Task<IActionResult> GetById(int id)
         {
@@ -47,7 +54,7 @@ namespace Economic.Api.Controllers
             }
         }
 
-        [HttpGet("productTypeId")]
+        [HttpGet("productType/{id}")]
         [AllowAnonymous]
         public async Task<IActionResult> GetByIdProductType(int id)
         {
@@ -66,16 +73,16 @@ namespace Economic.Api.Controllers
             }
         }
 
-        [HttpGet("KeyWord")]
+        [HttpGet("Search/{keyWord}")]
         [AllowAnonymous]
-        public async Task<IActionResult> GetByKeyword(string Key)
+        public async Task<IActionResult> GetByKeyword([FromRoute]string keyWord)
         {
             try
             {
-                var product = await _productService.GetByKeywordAsync(Key);
+                var product = await _productService.GetByKeywordAsync(keyWord);
                 if (product == null)
                 {
-                    return NotFound($"Cannot find a product with keyWord: {Key}");
+                    return NotFound($"Cannot find a product with keyWord: {keyWord}");
                 }
                 return Ok(product);
             }
@@ -85,7 +92,7 @@ namespace Economic.Api.Controllers
             }
         }
 
-        [HttpDelete("Id")]
+        [HttpDelete("delete/{id}")]
         [AllowAnonymous]
         public async Task<IActionResult> Delete(int id)
         {
@@ -107,7 +114,6 @@ namespace Economic.Api.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-
         public async Task<IActionResult> Create([FromBody]ProductCreateRequest request)
         {
             var productId = await _productService.CreateAsync(request);
@@ -116,6 +122,7 @@ namespace Economic.Api.Controllers
                 return BadRequest();
             }
             var result = await _productService.GetByIdAsync(productId);
+
             if(result == null)
             {
                 return NotFound($"Cannot find a product with Id: {productId}");
@@ -141,6 +148,44 @@ namespace Economic.Api.Controllers
                 return Ok(result);
             }
             catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpGet("{productId}/comments")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetByIdProduct(int productId)
+        {
+            try
+            {
+                var comments = await _commentService.GetByIdProductAsync(productId);
+                if (comments == null)
+                {
+                    return NotFound($"Cannot find a comment  with Id product: {productId}");
+                }
+                return Ok(comments);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpPost("{id}/comments")]
+        [AllowAnonymous]
+        public async Task<IActionResult> CreateComment([FromBody] CommentCreateRequest request,[FromRoute] int id)
+        {
+            try
+            {
+                var commentId = await _commentService.CreateAsync(request, id);
+                if (commentId == 0)
+                {
+                    return BadRequest();
+                }
+                return Ok(commentId);
+            }
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }

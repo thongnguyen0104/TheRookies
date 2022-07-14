@@ -26,7 +26,7 @@ namespace Economic.Api.Controllers
             var productTypes = await _productTypeService.GetAllAsync();
             return Ok(productTypes);
         }
-        [HttpGet("Id")]
+        [HttpGet("{id}")]
         [AllowAnonymous]
         public async Task<IActionResult> GetById(int id)
         {
@@ -44,7 +44,7 @@ namespace Economic.Api.Controllers
                 return BadRequest(e.Message);
             }
         }
-        [HttpDelete("Id")]
+        [HttpDelete("{id}")]
         [AllowAnonymous]
         public async Task<IActionResult> Delete(int id)
         {
@@ -75,7 +75,7 @@ namespace Economic.Api.Controllers
             var result = await _productTypeService.GetByIdAsync(productTypeId);
             if (result == null)
             {
-                return NotFound($"Cannot find a product with Id: {productTypeId}");
+                return NotFound($"Cannot find a product type with Id: {productTypeId}");
             }
             return Ok(result);
         }
