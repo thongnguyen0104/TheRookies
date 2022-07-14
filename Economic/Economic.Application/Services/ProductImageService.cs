@@ -25,9 +25,17 @@ namespace Economic.Application.Services
             _context = context;
         }
 
-        public Task<int> CreateAsync(ProductImageCreateRequest request)
+        public async Task<int> CreateAsync(ProductImageCreateRequest request)
         {
-            throw new NotImplementedException();
+            var productImg = new ProductImage()
+            {
+                ProductId = request.ProductId,
+                ProductPath = request.ProductPath,
+            };
+            await _context.AddAsync(productImg);
+            await _context.SaveChangesAsync();
+
+            return productImg.Id;
         }
 
         //public async Task<int> CreateAsync(ProductImageCreateRequest request)

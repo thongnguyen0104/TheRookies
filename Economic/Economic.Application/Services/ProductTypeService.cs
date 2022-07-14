@@ -48,15 +48,16 @@ namespace Economic.Application.Services
             {
                 throw new EconomicException($"Cannot delete product with Id: {productTypeId}");
             }
+            productType.IsDeleted = 1;
 
-            _context.ProductTypes.Remove(productType);
+            //_context.ProductTypes.Remove(productType);
 
             return await _context.SaveChangesAsync();
         }
 
         public async Task<List<ProductTypeViewModel>> GetAllAsync()
         {
-            return await _context.ProductTypes.Select(productType => new ProductTypeViewModel()
+            return await _context.ProductTypes.Where(x => x.IsDeleted == 0).Select(productType => new ProductTypeViewModel()
             {
                 Id = productType.Id,
                 Name = productType.Name,
@@ -66,7 +67,7 @@ namespace Economic.Application.Services
 
         public async Task<ProductTypeViewModel> GetByIdAsync(int productTypeId)
         {
-            var _productType = await _context.ProductTypes.Where(p => p.Id == productTypeId).FirstOrDefaultAsync();
+            var _productType = await _context.ProductTypes.Where(p => (p.Id == productTypeId) && (p.IsDeleted == 0)).FirstOrDefaultAsync();
 
             if (_productType == null)
             {
@@ -90,6 +91,7 @@ namespace Economic.Application.Services
             }
             productType.Name = request.Name;
             productType.Description = request.Description;
+            productType.IsDeleted = request.IsDeleted;
 
             return await _context.SaveChangesAsync();
         }
