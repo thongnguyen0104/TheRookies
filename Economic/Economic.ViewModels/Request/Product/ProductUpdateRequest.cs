@@ -22,7 +22,8 @@ namespace Economic.ViewModels.Request.Product
         [DataType(DataType.Currency)]
         public decimal Price { get; set; }
 
-        [Display(Name = "Product Price Description")]
+        [Display(Name = "Product Description")]
         public string Description { get; set; }
+
     }
 }

@@ -15,7 +15,8 @@ namespace Economic.ViewModels.ViewModels
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
         public int ProductTypeId { get; set; }
-        public List<ProductImageViewModel> ProductImages { get; set; }
-        public List<CommentViewModel> Comments { get; set; }
+        public int IsDeleted { get; set; }
+        public List<ProductImageViewModel>? ProductImages { get; set; }
+        public List<CommentViewModel>? Comments { get; set; }
     }
 }

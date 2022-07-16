@@ -9,12 +9,12 @@ namespace Economic.ViewModels.ViewModels
 {
     public class CommentViewModel
     {
-        private string _userAvatar;
-        public string UserAvatar
-        {
-            get => string.IsNullOrEmpty(_userAvatar) ? string.Empty : _userAvatar;
-            set => _userAvatar = value;
-        }
+        //private string _userAvatar;
+        //public string UserAvatar
+        //{
+        //    get => string.IsNullOrEmpty(_userAvatar) ? string.Empty : _userAvatar;
+        //    set => _userAvatar = value;
+        //}
         public int Id { get; set; }
         public int ProductId { get; set; }
         public string UserName { get; set; }
@@ -22,7 +22,6 @@ namespace Economic.ViewModels.ViewModels
         [Range(1, 5)]
         public int Star { get; set; }
         public string Content { get; set; }
-
-        public DateTime CreatedDate ;
+        public DateTime CreatedDate { get; set; }
     }
 }

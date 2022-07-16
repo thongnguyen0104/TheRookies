@@ -25,5 +25,6 @@ namespace Economic.ViewModels.Request.Product
         [Required(ErrorMessage = "Product description is required.")]
         [Display(Name = "Description")]
         public string Description { get; set; }
+        //public int IsDeleted { get; set; }
     }
 }

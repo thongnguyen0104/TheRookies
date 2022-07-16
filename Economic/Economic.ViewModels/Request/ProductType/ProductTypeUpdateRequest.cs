@@ -17,5 +17,8 @@ namespace Economic.ViewModels.Request.ProductType
 
         [Display(Name = "Description")]
         public string Description { get; set; }
+
+        [Display(Name = "IsDeleted")]
+        public int IsDeleted { get; set; }
     }
 }
