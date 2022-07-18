@@ -52,6 +52,16 @@ namespace Economic.UnitTest.API.ControllerTests.Mocks
             Setup(x => x.UpdateAsync(It.IsAny<ProductTypeUpdateRequest>())).Throws(new Exception());
             return this;
         }
+        public MockProductTypeService MockDeleteAsync(int result)
+        {
+            Setup(x => x.DeleteAsync(It.IsAny<int>())).ReturnsAsync(result);
+            return this;
+        }
+        public MockProductTypeService MockDeleteAsync_ThrowException()
+        {
+            Setup(x => x.DeleteAsync(It.IsAny<int>())).Throws(new Exception());
+            return this;
+        }
 
     }
 }
