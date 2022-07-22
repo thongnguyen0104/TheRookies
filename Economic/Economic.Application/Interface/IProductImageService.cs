@@ -11,7 +11,7 @@ namespace Economic.Application.Interface
     public interface IProductImageService
     {
         Task<int> CreateAsync(ProductImageCreateRequest request);
-        Task<int> UpdateAsync(ProductImageCreateRequest request, int productId);
+        Task<int> UpdateAsync(ProductImageUpdateRequest request, int productId);
         Task<int> DeleteAsync(int productImageId, int productId);
         Task<List<ProductImageViewModel>> GetByProductIdAsync(int productId);
         Task<ProductImageViewModel> GetByIdAsync(int productImageId, int productId);

@@ -84,7 +84,10 @@ namespace Economic.Application.Services
 
         public async Task<List<ProductViewModel>> GetAllAsync()
         {
-            return await _context.Products.Where(x => x.IsDeleted == 0).Select(product => new ProductViewModel()
+            return await _context.Products.Where(x => x.IsDeleted == 0)
+                .Include(x => x.ProductType)
+                .Include(x => x.ProductImages)
+                .Select(product => new ProductViewModel()
                 {
                     Id = product.Id,
                     Name = product.Name,
@@ -93,6 +96,7 @@ namespace Economic.Application.Services
                     CreatedDate = (DateTime)product.CreatedDate,
                     UpdatedDate = product.UpdatedDate,
                     ProductTypeId = product.ProductTypeId,
+                    ProductTypeName = product.ProductType.Name,
                     IsDeleted = product.IsDeleted,
                     ProductImages =_context.ProductImages.Where(pM => pM.ProductId == product.Id).Select(image => new ProductImageViewModel()
                     {
@@ -108,6 +112,7 @@ namespace Economic.Application.Services
         public async Task<ProductViewModel> GetByIdAsync(int productId)
         {
             var product = await _context.Products.Where(x => (x.Id == productId) && (x.IsDeleted == 0))
+                .Include(x =>x.ProductType)
                 .Include(x => x.ProductImages)
                 .FirstOrDefaultAsync();
             if (product == null)
@@ -123,8 +128,9 @@ namespace Economic.Application.Services
                 CreatedDate = product.CreatedDate,
                 UpdatedDate = product.UpdatedDate,
                 ProductTypeId = product.ProductTypeId,
+                ProductTypeName = product.ProductType.Name,
                 IsDeleted = product.IsDeleted,
-                ProductImages = _context.ProductImages.Where(pM => pM.ProductId == product.Id).Select(image => new ProductImageViewModel()
+                ProductImages = product.ProductImages == null ? null : _context.ProductImages.Where(pM => pM.ProductId == product.Id).Select(image => new ProductImageViewModel()
                 {
                     Id = image.Id,
                     ProductId = image.ProductId,

@@ -52,6 +52,7 @@ namespace Economic.Application.Services
                 UserName = comment.User.Name,
                 Star = comment.Star,
                 Content= comment.Content,
+                CreatedDate = (DateTime)comment.Created,
             }).ToListAsync();
 
             return comments;

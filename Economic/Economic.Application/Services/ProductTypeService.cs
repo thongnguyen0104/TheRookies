@@ -18,36 +18,48 @@ namespace Economic.Application.Services
     {
         private readonly IConfiguration _configuration;
         private readonly EconomicDbContext _context;
+        private readonly IProductService _productService;
 
         private const int DEFAULT_LIMIT = 999;
         private const int DEFAULT_PAGE_INDEX = 1;
 
-        public ProductTypeService(EconomicDbContext context, IConfiguration configuration)
+        public ProductTypeService(EconomicDbContext context, IConfiguration configuration, IProductService productService)
         {
             _context = context;
             _configuration = configuration;
+            _productService = productService;
         }
         public async Task<int> CreateAsync(ProductTypeCreateRequest request)
         {
+            if (string.IsNullOrEmpty(request.Name))
+            {
+                return 0;
+            }
             var productType = new ProductType()
             {
                 Name = request.Name,
                 Description = request.Description,
             };
+
             await _context.AddAsync(productType);
             await _context.SaveChangesAsync();
-
             return productType.Id;
         }
 
         public async Task<int> DeleteAsync(int productTypeId)
         {
-            var productType = await _context.ProductTypes.Where(x => x.Id == productTypeId).FirstOrDefaultAsync();
+            var productType = await _context.ProductTypes.Where(x => x.Id == productTypeId).Include(x => x.Products).FirstOrDefaultAsync();
 
             if (productType == null)
             {
                 throw new EconomicException($"Cannot delete product with Id: {productTypeId}");
             }
+
+            foreach (var product in productType.Products.ToList())
+            {
+                await _productService.DeleteAsync(product.Id);
+            }
+
             productType.IsDeleted = 1;
 
             //_context.ProductTypes.Remove(productType);
