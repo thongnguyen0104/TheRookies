@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Economic.Utilities.SystemConstants;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,13 +9,18 @@ namespace Economic.ViewModels.ViewModels
 {
     public class ProductImageViewModel
     {
-        private string? _url;
+        private string _fileurl;
         public int Id { get; set; }
         public int ProductId { get; set; }
+        public string FileUrl
+        {
+            get => string.IsNullOrEmpty(_fileurl) ? SystemConstants.DEFAULT_PRODUCT_IMAGE_URL : _fileurl;
+            set => _fileurl = value;
+        }
         public string ProductPath
         {
-            get => string.IsNullOrEmpty(_url) ? string.Empty : _url;
-            set => _url = value;
+            get ;
+            set ;
         }
     }
 }
