@@ -26,23 +26,13 @@ namespace Economic.UnitTest.API.ControllerTests
                 },
             };
             var mockProductTypeService = new MockProductTypeService().MockGetAllAsync(mockData);
-
             var controller = new ProductTypesController(mockProductTypeService.Object);
-
             var result = await controller.Get() as OkObjectResult;
-
-            //var content = JsonConvert.DeserializeObject<List<ProductTypeViewModel>>(result.Value.ToString());
-
             Assert.NotNull(result);
-
             var contnet = result.Value as List<ProductTypeViewModel>;
-
             Assert.NotNull(contnet);
-
             Assert.IsType<OkObjectResult>(result);
-
             Assert.Equal(mockData, contnet);
-
             Assert.IsType<List<ProductTypeViewModel>>(contnet);
 
         }
