@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CamelStore | Ecommerce Website Desgin</title>
+    <link rel="stylesheet" href="/public/css/input.css">
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="/public/css/styleComment.css">
+    <link rel="icon" href="/public/img/camel-logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <!-- hader -->
+    <div class="header">
+        <div class="container">
+
+            <div class="navbar">
+
+                <div class="logo">
+                    <a href="/">
+                        <img src="~/public/img/logo.png" alt="logo" width="125px">
+                    </a>
+                </div>
+
+                <div class="navbar__input">
+                    <form asp-page="/Product/Search" method="get" style="width: 100%">
+                        <input name="keyword" type="text" placeholder="Tìm kiếm">
+                    </form>
+                    <div class="navnar__input-search">
+                        <i class="navnar__input-search-icon fa fa-search" aria-hidden="true"></i>
+                    </div>
+                </div>
+
+                <nav>
+                    <ul id="MenuItems">
+                        <li><a asp-page="/Pages/Index">Trang chủ</a></li>
+                        <li><a asp-page="/Product/Product">Sản phẩm</a></li>
+                        <li><a href="#">Về chúng tôi</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                    </ul>
+                </nav>
+
+                <a class="header__cart" href="#cart" ?>
+                    <img src="~/public/img/cart.png" alt="cart" width="30px" height="30px">
+                    <span id="numInCartId" class="header__cart-notice">0</span>
+                </a>
+                <img src="~/public/img/menu.png" alt="menu" class="menu-icon" onclick="menutoggle()">
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <h1>Không gian bếp của bạn<br>sẽ có một phong cách mới!</h1>
+                    <p>Cái đẹp trong phong cách, sự hài hòa, lịch thiệp
+                        và sự nhịp nhàng <br> phụ thuộc vào tính đơn giản.
+                    </p>
+                    <a href="#local" class="btn">Khám phá ngay &#8594;</a>
+                </div>
+                <div class="col-2">
+                    <img src="~/public/img/image1.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @RenderBody()
+
+    @*footer*@
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>Download Our App</h3>
+                    <p>Download App for Android and Ios mobile phone</p>
+                    <div class="app-logo">
+                        <img src="~/public/img/play-store.png" alt="">
+                        <img src="~/public/img/app-store.png" alt="">
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <a href=""><img src="~/public/img/logo-white.png" alt="logo"></a>
+                    <p>Mục đích của chúng tôi là để làm cho căn bếp của bạn thật sự tiện lợi có thể tiếp cận được với nhiều người sản phẩm hữu ích một cách dễ dàng nhất</p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Chính sách</h3>
+                    <ul>
+                        <li>Giao hàng tận nơi</li>
+                        <li>1 đổi 1 sản phẩm có lỗi do NSX</li>
+                    </ul>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Loại</h3>
+                    <ul>
+                        <li>Ấm đun</li>
+                        <li>Nồi cơm</li>
+                        <li>Máy xay, ép</li>
+                        <li>Bếp, lẩu điện</li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Follow us</h3>
+                    <ul>
+                        <li>Twitter</li>
+                        <li>Facebook</li>
+                        <li><a style="color: #8a8a8a" href="mailto:nguyenhoangthong0104@gmail.com">Email</a></li>
+                        <li><a style="color: #8a8a8a" href="#" title="0358576500">Phone</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright"> &#169; Copyright 2022 - Camel-Store</p>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="~/public/js/cart.js"></script>
+
+    <!-- js for toggle nemu -->
+    <script>
+        var MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";
+
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px";
+            } else {
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+    </script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>
