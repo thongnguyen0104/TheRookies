@@ -21,17 +21,20 @@ namespace Economic.Api.Controllers
         private readonly IProductService _productService;
         private readonly ICommentService _commentService;
         private readonly IMapper _mapper;
-        public ProductsController(IProductService productService, ICommentService commentService, IMapper mapper)
+        private readonly IWebHostEnvironment _hostEnvironment;
+        public ProductsController(IProductService productService, ICommentService commentService, IMapper mapper, IWebHostEnvironment hostEnvironment)
         {
             _productService = productService;
             _commentService = commentService;
             _mapper = mapper;
+            _hostEnvironment = hostEnvironment;
         }
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> Get()
         {
             var products = await _productService.GetAllAsync();
+            products.ForEach(x => x.ProductImages.ForEach(p => p.ProductPath = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, p.ProductPath)));
             return Ok(products);
         }
 
@@ -46,6 +49,7 @@ namespace Economic.Api.Controllers
                 {
                     return NotFound($"Cannot find a product with Id: {id}");
                 }
+                product.ProductImages.ForEach(x => x.ProductPath = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ProductPath));
                 return Ok(product);
             } 
             catch (Exception e)
@@ -65,6 +69,7 @@ namespace Economic.Api.Controllers
                 {
                     return NotFound($"Cannot find a product with Id: {id}");
                 }
+                products.ForEach(x => x.ProductImages.ForEach(p => p.ProductPath = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, p.ProductPath)));
                 return Ok(products);
             }
             catch (Exception e)
@@ -84,6 +89,7 @@ namespace Economic.Api.Controllers
                 {
                     return NotFound($"Cannot find a product with keyWord: {keyWord}");
                 }
+                product.ForEach(x => x.ProductImages.ForEach(p => p.ProductPath = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, p.ProductPath)));
                 return Ok(product);
             }
             catch (Exception e)
@@ -127,6 +133,7 @@ namespace Economic.Api.Controllers
             {
                 return NotFound($"Cannot find a product with Id: {productId}");
             }
+            result.ProductImages.ForEach(x => x.ProductPath = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ProductPath));
             return Ok(result);
         }
 

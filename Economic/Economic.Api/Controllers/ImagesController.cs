@@ -28,10 +28,11 @@ namespace Economic.Api.Controllers
             try
             {
                 var images = await _productImageService.GetByProductIdAsync(productId);
-                if(images == null)
+                if (images == null)
                 {
                     return NotFound($"Cannot find a product image with Id: {productId}");
                 }
+                images.ForEach(x => x.ProductPath = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.ProductPath));
                 return Ok(images);
             }
             catch (Exception e)
@@ -52,6 +53,7 @@ namespace Economic.Api.Controllers
                 {
                     return NotFound($"Cannot find a product image with Id: {productImageId}");
                 }
+                image.ProductPath = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, image.ProductPath);
                 return Ok(image);
             }
             catch (Exception e)
@@ -64,14 +66,59 @@ namespace Economic.Api.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> CreateAsync([FromForm] ProductImageCreateRequest request)
         {
-            
-            request.ProductPath = await SaveImage(request.ImageFile);
-            var ImageSrc = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, request.ProductPath);
-            request.ProductPath = ImageSrc;
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                var imageId = await _productImageService.CreateAsync(request);
+                if (imageId == 0)
+                {
+                    return BadRequest();
+                }
+                var data = await _productImageService.GetByIdAsync(imageId, request.ProductId);
+                if (data == null)
+                {
+                    return NotFound($"Cannot find image with Id: {imageId}");
+                }
+                data.ProductPath = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, data.ProductPath);
+                return Ok(data);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            //request.ProductPath = await SaveImage(request.ImageFile);
+            //var ImageSrc = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, request.ProductPath);
+            //request.ProductPath = ImageSrc;
+            //var productImg = await _productImageService.CreateAsync(request);
+            //return StatusCode(201);
+        }
 
-            var productImg = await _productImageService.CreateAsync(request);
-
-            return StatusCode(201);
+        [HttpPut]
+        [AllowAnonymous]
+        public async Task<IActionResult> UpdateAsync([FromForm] ProductImageUpdateRequest request)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                var result = await _productImageService.UpdateAsync(request, request.ProductId);
+                //pass parameter productId = 0 to don't check product Id
+                var data = await _productImageService.GetByIdAsync(request.Id, request.ProductId);
+                if (data == null)
+                {
+                    return NotFound($"Cannot find image with Id: {request.Id}");
+                }
+                return Ok(data);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [NonAction]

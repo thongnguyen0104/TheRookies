@@ -56,6 +56,8 @@ builder.Services.AddTransient<ICommentService, CommentService>();
 
 builder.Services.AddTransient<IUserService, UserService>();
 
+builder.Services.AddTransient<IStorageService, StorageService>();
+
 
 
 var app = builder.Build();
@@ -64,7 +66,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    //app.UseSwaggerUI();
+    app.UseSwaggerUI();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Economic.Api v1"));
 
 }
@@ -80,26 +82,10 @@ app.UseCors("CORS");
 
 app.UseHttpsRedirection();
 
-//app.UseStaticFiles(new StaticFileOptions
-//{
-//    FileProvider = new PhysicalFileProvider(
-//           Path.Combine(builder.Environment.ContentRootPath, "Images")),
-//    RequestPath = "/Uploads"
-//});
-
-//var webRootProvider = new PhysicalFileProvider(builder.Environment.WebRootPath);
-//var newPathProvider = new PhysicalFileProvider(
-//  Path.Combine(builder.Environment.ContentRootPath, "Uploads"));
-
-//var compositeProvider = new CompositeFileProvider(webRootProvider,
-//                                                  newPathProvider);
-
-//// Update the default provider.
-//app.Environment.WebRootFileProvider = compositeProvider;
-
+// 
 app.UseStaticFiles();
 
-
+//app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

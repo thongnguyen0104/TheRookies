@@ -9,8 +9,6 @@ namespace Economic.Api
         public MappingProfile()
         {
             CreateMap<Product, ProductViewModel>();
-            CreateMap<Product, ProductViewModel>();
-            CreateMap<Product, CommentViewModel>();
         }
     }
 }

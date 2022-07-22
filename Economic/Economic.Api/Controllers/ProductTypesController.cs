@@ -4,6 +4,7 @@ using Economic.Data.Entities;
 using Economic.ViewModels.Request.ProductType;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Economic.Api.Controllers
 {
@@ -14,17 +15,23 @@ namespace Economic.Api.Controllers
     {
         private readonly EconomicDbContext _context;
         private readonly IProductTypeService _productTypeService;
-        public ProductTypesController(EconomicDbContext context, IProductTypeService productTypeService)
+        public ProductTypesController(IProductTypeService productTypeService)
         {
-            _context = context;
             _productTypeService = productTypeService;
         }
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> Get()
         {
-            var productTypes = await _productTypeService.GetAllAsync();
-            return Ok(productTypes);
+            try
+            {
+                var productTypes = await _productTypeService.GetAllAsync();
+                return Ok(productTypes);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
         [HttpGet("{id}")]
         [AllowAnonymous]
@@ -33,10 +40,10 @@ namespace Economic.Api.Controllers
             try
             {
                 var productType = await _productTypeService.GetByIdAsync(id);
-                if (productType == null)
-                {
-                    return NotFound($"Cannot find a product type with Id: {id}");
-                }
+                //if (productType == null)
+                //{
+                //    return NotFound($"Cannot find a product type with Id: {id}");
+                //}
                 return Ok(productType);
             }
             catch (Exception e)
@@ -51,7 +58,7 @@ namespace Economic.Api.Controllers
             try
             {
                 var productType = await _productTypeService.DeleteAsync(id);
-                if (productType == null)
+                if (productType == 0)
                 {
                     return NotFound($"Cannot Delete a product type with Id: {id}");
                 }
@@ -67,17 +74,30 @@ namespace Economic.Api.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Create([FromBody] ProductTypeCreateRequest request)
         {
-            var productTypeId = await _productTypeService.CreateAsync(request);
-            if (productTypeId == null)
+            try
             {
-                return BadRequest();
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                var productTypeId = await _productTypeService.CreateAsync(request);
+                
+                if (productTypeId == 0)
+                {
+                    return BadRequest();
+                }
+
+                var result = await _productTypeService.GetByIdAsync(productTypeId);
+                if(result == null)
+                {
+                    return NotFound($"Cannot find a product with Id: {productTypeId}");
+                }
+                return Ok(result);
             }
-            var result = await _productTypeService.GetByIdAsync(productTypeId);
-            if (result == null)
+            catch (Exception e)
             {
-                return NotFound($"Cannot find a product type with Id: {productTypeId}");
+                return BadRequest(e.Message);
             }
-            return Ok(result);
         }
 
         [HttpPut]
@@ -91,11 +111,18 @@ namespace Economic.Api.Controllers
                     return BadRequest(ModelState);
                 }
                 var result = await _productTypeService.UpdateAsync(request);
+
                 if (result == 0)
                 {
                     return BadRequest();
                 }
-                return Ok(result);
+
+                var data = await _productTypeService.GetByIdAsync(request.Id);
+                if (data == null)
+                {
+                    return NotFound($"Cannot find a product with Id: {request.Id}");
+                }
+                return Ok(data);
             }
             catch (Exception e)
             {
