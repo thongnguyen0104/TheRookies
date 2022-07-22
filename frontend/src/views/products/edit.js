@@ -13,6 +13,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from "yup";
 import productApi from '../../api/productApi';
 import { END_POINT } from '../../api/endPoint';
+import UploadImg from './upload';
 
 function EditProductType() {
   var { id } = useParams();
@@ -56,10 +57,8 @@ function EditProductType() {
 
   return (
     <>
-      <div style={{ padding: '0px 0px 0px 370px' }}>
-        <Sidebar />
-      </div>
       <div style={{ padding: '50px 50px 0px 0px' }}>
+        <h1>Update Product</h1>
         <Container>
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Row className="mb-3">
@@ -67,7 +66,7 @@ function EditProductType() {
                 <Form.Label>Product name</Form.Label>
                 <Form.Control
                   type="text"
-                  // placeholder={product.name}
+                  placeholder={product.name}
                   defaultValue={product.name}
                   {...register('name')}
                 />
@@ -77,7 +76,7 @@ function EditProductType() {
                 <Form.Label>Description</Form.Label>
                 <Form.Control
                   type="text"
-                  // placeholder={product.description}
+                  placeholder={product.description}
                   defaultValue={product.description}
                   {...register('description')}
                 />
@@ -89,7 +88,7 @@ function EditProductType() {
                 <Form.Label>Price</Form.Label>
                 <Form.Control
                   type="number"
-                  // placeholder={product.price}
+                  placeholder={product.price}
                   defaultValue={product.price}
                   {...register('price')}
                 />
@@ -107,7 +106,7 @@ function EditProductType() {
                   defaultValue=""
                 >
                   <option value="" disabled>
-                    Select one
+                    {product.productTypeName}
                   </option>
                   {productTypes.map((productType, key) => (
                     <option key={key} value={productType.id}>
@@ -117,8 +116,13 @@ function EditProductType() {
                 </select>
               </Form.Group>
             </Row>
-            <Button type="submit">Submit form</Button>
+            <Button type="submit">Update</Button>
           </Form>
+          {product.productImages && (
+            <UploadImg
+              productId= {id}
+              productImages={product.productImages} />
+          )}
         </Container>
       </div>
     </>

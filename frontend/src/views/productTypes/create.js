@@ -16,7 +16,6 @@ function CreateProuctType() {
     const {
         register,
         handleSubmit,
-        watch,
         formState: { errors }
     } = useForm();
 

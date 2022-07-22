@@ -1,57 +1,122 @@
 import React, { useState, useEffect } from 'react';
-import { useForm, useFieldArray } from 'react-hook-form';
-import './uploadImage.scss'
+import { useForm, useFieldArray, useWatch } from 'react-hook-form';
 import productImgApi from '../../api/productImgApi'
+import { useNavigate, useParams } from "react-router-dom";
+import { Button, Form } from 'react-bootstrap';
 
-// import defaultImageSrc from "D:/TheRookies/Economic/Economic.Api/wwwroot/Images/11image1221329729.png";
+const UploadImg = (props) => {
+    const [isChanged, setIsChanged] = useState(false);
+    const [productImages, setProductImages] = useState([{}]);
+    const goback = useNavigate();
+    const { id } = useParams();
+    const { register, control, handleSubmit, reset } = useForm({
+        defaultValues: {
+            Images: productImages?.map((image) => {
+                return {
+                    productId: image.productId,
+                    ImageFile: "",
+                }
+            })
+        }
+    });
+    const { append } = useFieldArray({
+        control,
+        name: "Images",
+      });
+    const watchImage = useWatch({
+        control,
+        name: "Images",
+    });
 
-const UploadImg = () => {
+    function onUpdateChange() {
+        var result = false;
 
-
-    const { register, handleSubmit } = useForm();
+        if (watchImage) {
+            result = watchImage.some(
+                (image, index) =>
+                    image?.ImageFile !== "",
+            );
+        }
+        setIsChanged(result);
+    }
 
     const onSubmit = async (data) => {
-        const formData = new FormData();
-        formData.append("ImageFile", data.file[0]);
-        formData.append("ProductId", 25);
-        formData.append("ProductPath", "baiafui");
-        console.log(data);
-        // productImgApi.addAsync(formData);
+        var isUploadSuccess = true;
+        if (data && props.productId) {
+            if (data.Images?.length > 0) {
+
+                data.Images.forEach(async (image, index) => {
+                    const formData = new FormData();
+                    formData.append(
+                        "ImageFile",
+                        image.ImageFile !== "" ? image.ImageFile[0] : null,
+                    );
+                    formData.append("ProductId", id);
+                    formData.append("Id", productImages[index].id);
+                    const result = productImgApi.updateAsync(formData);
+                    console.log(productImages[index].id);
+                    // console.log(typeof (result))
+                    if (!result) {
+                        isUploadSuccess = false;
+                    }
+                })
+            }
+        }
+        if (isUploadSuccess) {
+            alert("Update product image successfully");
+            goback(-1);
+        }
     }
+
+    useEffect(() => {
+        onUpdateChange(); // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [watchImage]);
+
+    useEffect(() => {
+        if (props.productImages) {
+            setProductImages(props.productImages);
+            reset({
+                Images: productImages?.map((image) => {
+                    return {
+                        productId: image.productId,
+                        ImageFile: "",
+                    };
+                }),
+            });
+        }
+    }, [props]);
 
     return (
         <>
-        <div><img src={'https://localhost:7246/Images/1635775567220443732.png'}></img></div>
             <div className='container text-center'>
-                <p className='lead'>An Employee</p>
+                <p className='lead'>Upload Image</p>
             </div>
-            <form autoComplete='off' noValidate onSubmit={handleSubmit(onSubmit)}>
+            <Form autoComplete='off' noValidate onSubmit={handleSubmit(onSubmit)}>
                 <div className='card'>
                     <img className="form-control-file"></img>
                     <div className='card-body'>
-                        <div className='form-group'>
-                            <input
-                                type='file'
-                                accept='image/*'
-                                className="form-control"
-                                // onChange={showPreview}
-                                {...register("file")}
-                            />
-                        </div>
-                        <div className='form-group'>
-                            <input
-                            />
-                        </div>
-                        <div className='form-group'>
-                            <input
-                            />
-                        </div>
+                        <Button variant="secondary"
+                            onClick={() => append({ file: "" })}
+                        >
+                            AddImage
+                        </Button>
+                        {productImages.map((image, index) => (
+                            <Form.Group className='form-group' key={index}>
+                                <input
+                                    type='file'
+                                    accept='image/*'
+                                    className="form-control"
+                                    {...register(`Images.${index}.ImageFile`)}
+                                />
+                            </Form.Group>
+                        ))}
+                        <br></br>
                         <div className='form-group text-center'>
-                            <button type='submit' className='btn btn-light'>Submit</button>
+                            <Button type='submit' disabled={!isChanged}>Submit</Button>
                         </div>
                     </div>
                 </div>
-            </form>
+            </Form>
         </>
     );
 }

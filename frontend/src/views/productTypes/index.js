@@ -14,7 +14,6 @@ function ProductTypes() {
 
     const fetchData = async () => {
         setProductTypes(await productTypeApi.getAllAsync());
-        // const data = getProducts();
         console.log(productTypes);
     }
 
@@ -37,7 +36,6 @@ function ProductTypes() {
                             <th>#</th>
                             <th>Name</th>
                             <th>Description</th>
-                            {/* <th>Price</th> */}
                             <th>Edit</th>
                             <th>Update</th>
                         </tr>
@@ -64,7 +62,6 @@ function ProductTypes() {
                                             variant="danger"
                                             onClick={() => {
                                                 let check = window.confirm("Ban co chac xoa?")
-                                                // alert(check)
                                                 if (check)
                                                     deleteProductType(item.id)
                                             }

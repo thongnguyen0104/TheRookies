@@ -3,17 +3,11 @@ import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
 import Sidebar from '../../components/sidebar/Sidebar';
 import productTypeApi from '../../api/productTypeApi';
 import { useNavigate, useParams } from "react-router-dom";
-
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as Yup from "yup";
-import productApi from '../../api/productApi';
-import { END_POINT } from '../../api/endPoint';
 
 function EditProductType() {
 
@@ -34,7 +28,6 @@ function EditProductType() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors }
   } = useForm();
 
