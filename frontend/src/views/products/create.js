@@ -6,7 +6,6 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import Sidebar from '../../components/sidebar/Sidebar';
 import productImgApi from '../../api/productImgApi'
 
 import productTypeApi from '../../api/productTypeApi';
@@ -19,7 +18,6 @@ function FormExample() {
     register,
     handleSubmit,
     control,
-    watch,
     formState: { errors }
   } = useForm();
   const { fields, append } = useFieldArray({
@@ -37,8 +35,6 @@ function FormExample() {
         formData.append("ImageFile", image.ImageFile[0]);
         formData.append("ProductId", id);
         const result = productImgApi.addAsync(formData);
-        console.log(result);
-        console.log(typeof (result))
         if (!result) {
           var isUploadSuccess = false;
         }

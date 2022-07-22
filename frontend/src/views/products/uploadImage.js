@@ -75,7 +75,6 @@ export default function Employee(props) {
             formData.ProductId = values.ProductId
             formData.ProductPath = values.ProductPath;
             formData.ImageFile = values.imageFile;
-            // alert("hello")
             addOrEdit(formData, resetForm)
         }
     }

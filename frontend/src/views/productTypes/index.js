@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import productTypeApi from '../../api/productTypeApi';
 import { Link } from 'react-router-dom'
 
-import { Table, Navbar, Container, Nav, NavDropdown, Button } from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
 
 function ProductTypes() {
 
@@ -14,13 +14,11 @@ function ProductTypes() {
 
     const fetchData = async () => {
         setProductTypes(await productTypeApi.getAllAsync());
-        console.log(productTypes);
     }
 
     const deleteProductType = async (id) => {
         const result = await productTypeApi.deleteAsync(id)
         fetchData();
-        console.log(result)
     }
 
     return (
