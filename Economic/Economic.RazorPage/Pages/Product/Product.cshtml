@@ -1,0 +1,174 @@
+﻿@page "/product"
+@model Economic.RazorPage.Pages.Product.ProductModel
+
+@{
+    ViewData["Title"] = "Product";
+}
+
+<!-- featured categories -->
+<div class="categories">
+    <div class="small-container">
+        <h2 class="title">Loại sản phẩm</h2>
+        <div class="row">
+        @foreach (var item in Model._homeViewModels.ProductTypes)
+        {
+            <div class="col-4" style="background-color: lightpink">
+                <a asp-page="Producttypes" asp-route-id="@item.Id">
+                    <h4 style="text-align: center; font-size: 18px; line-height: 26px; height: 26px">@item.Name</h4>
+                </a>
+            </div>
+        }
+        </div>
+    </div>
+</div>
+
+<!-- featured products -->
+<div class="small-container">
+    <!-- Lastest Products -->
+    <h2 id="local" class="title">Sản phẩm mới nhất</h2>
+    <div class="row">
+        @foreach (var item in Model._homeViewModels.Products)
+        {
+            <div class="col-4">
+                <a asp-page="Productdetail" asp-route-id="@item.Id">
+                    @if (item.ProductImages.Count() == 0)
+                    {
+                        <img src="/public/img/cart.png" alt="product">
+                    }
+                    else
+                    {
+                        <img src="@item.ProductImages[0].ProductPath" alt="product">
+                    }
+                    @*<img src="~/public/img/products/@item.ProductImages[0].ProductPath" alt="product">*@
+                    <h4>@item.Name</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <span style="color: #999; font-size: 13px; text-decoration: line-through;">@(item.Price*110/100)</span>
+                    <p style="color: #e4270e;">@item.Price</p>
+                </a>
+            </div>
+        }
+
+    </div>
+
+</div>
+
+<!-- offer -->
+<div class="offer">
+    <div class="small-container">
+        <div class="row">
+            <div class="col-2">
+                <img src="~/public/img/exclusive.png" alt="offer" class="offer-img">
+            </div>
+            <div class="col-2">
+                <p>Exclusive Available on RedStore</p>
+                <h1>Smart Band 4</h1>
+                <p>
+                    Instantly view call, text, app notifications and music in play.
+                    Keep your hands free as you keep up with life.
+                </p>
+                <br>
+                <a href="" class="btn">Buy Now &#8594;</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- testimonial -->
+<div class="testimonial">
+    <div class="small-container">
+        <div class="row">
+            <div class="col-3">
+                <i class="fa fa-quote-left"></i>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                    the
+                    industry's standard
+                    dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
+                    to
+                    make a type specimen
+                    book.
+                </p>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <img src="~/public/img/user-1.png" alt="user">
+                <h3>Sean Parker</h3>
+            </div>
+            <div class="col-3">
+                <i class="fa fa-quote-left"></i>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                    the
+                    industry's standard
+                    dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
+                    to
+                    make a type specimen
+                    book.
+                </p>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <img src="~/public/img/user-2.png" alt="user">
+                <h3>Mike Smith</h3>
+            </div>
+            <div class="col-3">
+                <i class="fa fa-quote-left"></i>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                    the
+                    industry's standard
+                    dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
+                    to
+                    make a type specimen
+                    book.
+                </p>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <img src="~/public/img/user-3.png" alt="user">
+                <h3>Mabel Joe</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- brands -->
+<div class="brands">
+    <div class="small-container">
+        <div class="row">
+            <div class="col-5">
+                <a href="https://kangaroo.vn/" target="_blank"><img src="~/public/img/logo-kangoroo.png" alt="logo"></a>
+            </div>
+            <div class="col-5">
+                <a href="http://www.delta.com.vn/" target="_blank"><img src="~/public/img/logo-delta.png" alt="logo"></a>
+            </div>
+            <div class="col-5">
+                <a href="https://tefla.co.za/" target="_blank"><img src="~/public/img/logo-tefla.png" alt="logo"></a>
+            </div>
+            <div class="col-5">
+                <a href="https://www.electrolux.vn/" target="_blank"><img src="~/public/img/logo-elextrolux.png" alt="logo"></a>
+            </div>
+            <div class="col-5">
+                <a href="https://sanaky.com.vn/" target="_blank"><img src="~/public/img/logo-sananky.png" alt="logo"></a>
+            </div>
+        </div>
+    </div>
+</div>

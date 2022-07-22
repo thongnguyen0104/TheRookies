@@ -1,0 +1,60 @@
+﻿@page "/producttypes/{id:int}"
+@model Economic.RazorPage.Pages.Product.ProducttypesModel
+@{
+}
+
+<!-- featured products -->
+<div class="small-container">
+
+    <div class="row">
+        @foreach (var item in Model._homeViewModels.ProductTypes)
+        {
+            <div class="col-4" style="background-color: lightpink">
+                <a asp-page="Producttypes" asp-route-id="@item.Id">
+                    <h4 style="text-align: center; font-size: 18px; line-height: 26px; height: 26px"> @item.Name </h4>
+                </a>
+            </div>
+        }
+    </div>
+
+</div>
+
+<div class="small-container">
+    <!-- Lastest Products -->
+    <h2 class="title">Các sản phẩm cùng loại</h2>
+    <div class="row">
+        @if (Model._homeViewModels.SameProducts.Count() !=0)
+        {
+            @foreach (var item in Model._homeViewModels.SameProducts)
+            {
+                <div class="col-4">
+                    <a asp-page="Productdetail" asp-route-id="@item.Id">
+                        @if (item.ProductImages.Count() == 0)
+                        {
+                            <img src="/public/img/cart.png" alt="product">
+                        }
+                        else
+                        {
+                            <img src="@item.ProductImages[0].ProductPath" alt="product">
+                        }
+                        <h4> @item.Name </h4>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <span style="color: #999; font-size: 13px; text-decoration: line-through;"> @item.Price</span>
+                        <p style="color: #e4270e;">@item.Price</p>
+                    </a>
+                </div>
+            }
+        }
+        else
+        {
+            <p style="font-size: 20px"> Not found for category </p>
+        }
+    </div>
+
+</div>
