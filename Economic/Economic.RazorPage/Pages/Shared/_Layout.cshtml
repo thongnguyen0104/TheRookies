@@ -15,28 +15,6 @@
 </head>
 
 <body>
-    @*<header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Economic.RazorPage</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>*@
-
     <!-- hader -->
     <div class="header">
         <div class="container">
@@ -60,8 +38,8 @@
 
                 <nav>
                     <ul id="MenuItems">
-                        <li><a href="#">Trang chủ</a></li>
-                        <li><a href="#">Sản phẩm</a></li>
+                        <li><a href="/">Trang chủ</a></li>
+                        <li><a asp-page="/Product/Product">Sản phẩm</a></li>
                         <li><a href="#">Về chúng tôi</a></li>
                         <li><a href="#">Liên hệ</a></li>
                     </ul>
@@ -72,18 +50,6 @@
                     <span id="numInCartId" class="header__cart-notice">0</span>
                 </a>
                 <img src="~/public/img/menu.png" alt="menu" class="menu-icon" onclick="menutoggle()">
-            </div>
-            <div class="row">
-                <div class="col-2">
-                    <h1>Không gian bếp của bạn<br>sẽ có một phong cách mới!</h1>
-                    <p>Cái đẹp trong phong cách, sự hài hòa, lịch thiệp
-                        và sự nhịp nhàng <br> phụ thuộc vào tính đơn giản.
-                    </p>
-                    <a href="#local" class="btn">Khám phá ngay &#8594;</a>
-                </div>
-                <div class="col-2">
-                    <img src="~/public/img/image1.png" alt="">
-                </div>
             </div>
         </div>
     </div>
