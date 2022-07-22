@@ -29,12 +29,12 @@ const sidebarNavItems = [
         to: '/users',
         section: 'users'
     },
-    {
-        display: 'Orders',
-        icon: <i className='bx bx-receipt'></i>,
-        to: '/order',
-        section: 'order'
-    },
+    // {
+    //     display: 'Orders',
+    //     icon: <i className='bx bx-receipt'></i>,
+    //     to: '/order',
+    //     section: 'order'
+    // },
 ]
 
 const Sidebar = () => {
@@ -62,7 +62,7 @@ const Sidebar = () => {
     return (
         <div className='sidebar'>
             <div className="sidebar__logo">
-                Animate
+                ADMIN
             </div>
             <div ref={sidebarRef} className="sidebar__menu">
                 <div
@@ -77,7 +77,6 @@ const Sidebar = () => {
                         <Link
                             to={item.to}
                             key={index}
-                            // onClick={AppLayout(item.display)}
                         >
                             <div className={`sidebar__menu__item ${activeIndex === index ? 'active' : ''}`}>
                                 <div className="sidebar__menu__item__icon">
