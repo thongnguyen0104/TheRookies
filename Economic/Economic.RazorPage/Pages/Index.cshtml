@@ -3,9 +3,10 @@
 
 @{
     ViewData["Title"] = "Home page";
+    Layout = "_MyLayout";
 }
 
-<!-- featured categories -->
+@*<!-- featured categories -->
 <div class="categories">
     <div class="small-container">
         <h2 class="title">Loại sản phẩm</h2>
@@ -14,87 +15,32 @@
         {
             <div class="col-4" style="background-color: lightpink">
                 <a asp-page="Producttypes" asp-route-id="@item.Id">
-                    @*<img src=".~/public/img/probuy-3.jpg" alt="">*@
                     <h4 style="text-align: center; font-size: 18px; line-height: 26px; height: 26px">@item.Name</h4>
                 </a>
             </div>
         }
         </div>
     </div>
-</div>
+</div>*@
+
+ @await Component.InvokeAsync("ProductType");
 
 <!-- featured products -->
 <div class="small-container">
-    <h2 class="title">Sản phẩm giảm giá</h2>
-    <div class="row">
-        <div class="col-4">
-            <a href="">
-                <img src="~/public/img/products/1.jpg" alt="product">
-            </a>
-            <a href="">
-                <h4>Nồi cơm nắp gài</h4>
-            </a>
-            <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
-            </div>
-            <p>325.000</p>
-        </div>
-        <div class="col-4">
-            <img src="~/public/img/products/2.jpg" alt="product">
-            <h4>Nồi cơm điện tử</h4>
-            <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-half-o"></i>
-                <i class="fa fa-star-o"></i>
-            </div>
-            <p>990.000</p>
-        </div>
-        <div class="col-4">
-            <img src="~/public/img/products/3.jpg" alt="product">
-            <h4>Nồi cơm Kangaroo</h4>
-            <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
-            </div>
-            <p>330.000</p>
-        </div>
-        <div class="col-4">
-            <img src="~/public/img/products/4.jpg" alt="product">
-            <h4>Nồi cơm mini</h4>
-            <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
-            </div>
-            <p>150.000</p>
-        </div>
-    </div>
-
     <!-- Lastest Products -->
     <h2 id="local" class="title">Sản phẩm mới nhất</h2>
     <div class="row">
         @foreach (var item in Model._homeViewModels.Products)
         {
             <div class="col-4">
-                <a asp-page="Productdetail" asp-route-id="@item.Id">
+                <a asp-page="/Product/Productdetail" asp-route-id="@item.Id">
                     @if (item.ProductImages.Count() == 0)
                     {
                         <img src="/public/img/cart.png" alt="product">
                     }
                     else
                     {
-                        <img src="/public/img/products/@item.ProductImages[0].ProductPath" alt="product">
+                        <img src="@item.ProductImages[0].ProductPath" alt="product">
                     }
                     @*<img src="~/public/img/products/@item.ProductImages[0].ProductPath" alt="product">*@
                     <h4>@item.Name</h4>
@@ -111,18 +57,6 @@
             </div>
         }
 
-    </div>
-
-    <div class="page-btn">
-        <a href="">
-            <span class="page-btn-arrow">&#8592;</span>
-        </a>
-        <a href="#">
-            <span class="page-btn-arrow"</span>
-        </a>
-        <a href="#">
-            <span class="page-btn-arrow">&#8594;</span>
-        </a>
     </div>
 
 </div>
