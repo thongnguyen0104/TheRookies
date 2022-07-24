@@ -18,20 +18,11 @@ namespace Economic.Application.Services
 {
     public class ProductService : IProductService
     {
-        private readonly IMapper _mapper;
-        private readonly IConfiguration _configuration;
         private readonly EconomicDbContext _context;
-        //private readonly ProductImageViewModel _productImageViewModel;
 
-        //private const int DEFAULT_LIMIT = 999;
-        //private const int DEFAULT_PAGE_INDEX = 1;
-
-        public ProductService(EconomicDbContext context, IConfiguration configuration, IMapper mapper)
+        public ProductService(EconomicDbContext context)
         {
             _context = context;
-            _configuration = configuration;
-            _mapper = mapper;
-            //_productImageViewModel = productImageViewModel;
         }
         public async Task<int> CreateAsync(ProductCreateRequest request)
         {
