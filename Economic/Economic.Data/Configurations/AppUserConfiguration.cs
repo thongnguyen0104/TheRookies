@@ -15,7 +15,7 @@ namespace Economic.Data.Configurations
         {
             builder.Property(x => x.Name).IsRequired().HasMaxLength(60);
             builder.Property(x => x.Address).IsRequired(false).HasMaxLength(100);
-            builder.Property(p => p.Avatar).HasDefaultValue("default-avatar.png");
+            builder.Property(p => p.Avatar).HasDefaultValue("default-avatar.png").IsRequired(false);
             builder.Property(x => x.RegisteredDate).IsRequired();
         }
     }
