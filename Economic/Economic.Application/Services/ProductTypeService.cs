@@ -16,17 +16,15 @@ namespace Economic.Application.Services
 {
     public class ProductTypeService : IProductTypeService
     {
-        private readonly IConfiguration _configuration;
         private readonly EconomicDbContext _context;
         private readonly IProductService _productService;
 
         private const int DEFAULT_LIMIT = 999;
         private const int DEFAULT_PAGE_INDEX = 1;
 
-        public ProductTypeService(EconomicDbContext context, IConfiguration configuration, IProductService productService)
+        public ProductTypeService(EconomicDbContext context, IProductService productService)
         {
             _context = context;
-            _configuration = configuration;
             _productService = productService;
         }
         public async Task<int> CreateAsync(ProductTypeCreateRequest request)
