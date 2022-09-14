@@ -40,7 +40,6 @@ const Products = () => {
                             <th>Description</th>
                             <th>Price</th>
                             <th>CreatedDate</th>
-                            {/* <th>Updated Date</th> */}
                             <th>Image</th>
                             <th colSpan={2}>Action</th>
                         </tr>
@@ -93,7 +92,6 @@ const Products = () => {
                                             variant="danger"
                                             onClick={() => {
                                                 let check = window.confirm("Ban co chac xoa?")
-                                                // alert(check)
                                                 if (check)
                                                     deleteProduct(item.id)
                                             }

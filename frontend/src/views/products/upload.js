@@ -55,7 +55,6 @@ const UploadImg = (props) => {
                     formData.append("Id", productImages[index].id);
                     const result = productImgApi.updateAsync(formData);
                     console.log(productImages[index].id);
-                    // console.log(typeof (result))
                     if (!result) {
                         isUploadSuccess = false;
                     }

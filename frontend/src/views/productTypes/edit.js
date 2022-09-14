@@ -64,7 +64,6 @@ function EditProductType() {
               <Form.Label>Description</Form.Label>
               <Form.Control
                 type="text"
-                // placeholder={product.description}
                 defaultValue={productType.description}
                 {...register('description')}
               />

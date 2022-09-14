@@ -31,22 +31,16 @@ function EditProductType() {
     const productTypes = await productTypeApi.getAllAsync()
     setProductTypes(productTypes);
     const product = await productApi.getByIdAsync(id)
-    console.log(product);
     setProduct(product);
   }
 
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors }
   } = useForm();
 
   const onSubmit = async (content) => {
-    // console.log(typeof(content));
-    console.log(content);
-    content.id = id;
-    console.log(content);
     var result = await productApi.updateAsync(content);
     if (result !== 0) {
       alert("Da update san pham thanh cong");
